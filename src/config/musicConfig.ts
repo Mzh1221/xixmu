@@ -50,19 +50,19 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
+				name: "luv(sic.) pt.3",
+				artist: "Nujabes / Shing02",
+				url: "/assets/music/Luv(sic.)pt3.mp3",
+				cover: "/assets/music/cover/luv.jpg",
+				lrc: "",
+			},
+			{
 				name: "使一颗心免于哀伤",
 				artist: "知更鸟 / HOYO-MiX / Chevy",
 				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
 				cover: "/assets/music/cover/109951169585655912.webp",
 				lrc: "",
 			},
-			{
-				name: "luv(sic.) pt.3",
-				artist: "Nujabes / Shing02",
-				url: "/assets/music/Luv(sic.)pt3.mp3",
-				cover: "/assets/music/cover/luv.jpg",
-				lrc: "",
-			}
 		],
 	},
 };

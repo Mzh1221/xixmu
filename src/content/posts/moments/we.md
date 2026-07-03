@@ -2,7 +2,7 @@
 title: 试试没图片
 credate: 2026-07-03
 updated: 2026-07-03
-description:
+description: 描述
 image:
 tags: []
 category: 动态

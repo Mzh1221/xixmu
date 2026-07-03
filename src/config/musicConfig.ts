@@ -59,7 +59,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 			{
 				name: "luv(sic.) pt.3",
 				artist: "Nujabes / Shing02",
-				url: "/assets/music/luv(sic.)pt.3.mp3",
+				url: "/assets/music/Luv(sic.)pt3.mp3",
 				cover: "/assets/music/cover/luv.jpg",
 				lrc: "",
 			}

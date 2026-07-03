@@ -1,14 +1,13 @@
 ---
-title: 试试没图片
+title: 测试动态
 credate: 2026-07-03
 updated: 2026-07-03
-description: 描述
-image:
-tags: []
+tags:
+  - 博客
 category: 动态
 pinned: false
 author: 惜夕暮
 draft: false
 published: 2026-07-03
 ---
-发
+我来

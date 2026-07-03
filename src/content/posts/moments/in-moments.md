@@ -3,6 +3,7 @@ title: 测试动态
 credate: 2026-07-03
 updated: 2026-07-03
 tags:
+  - 测试
 category: 动态
 pinned: false
 author: 惜夕暮

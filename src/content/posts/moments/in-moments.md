@@ -9,7 +9,7 @@ pinned: false
 author: 惜夕暮
 draft: false
 published: 2026-07-03
-image: ./images/wallhaven-n6r6m7.avif
+image: ./images/wallhaven-n6r6m7.jpg
 ---
 我来
 

@@ -44,6 +44,17 @@
       ],
       "createdAt": 1783043232137,
       "updatedAt": 1783043232137
+    },
+    "b9eda04f": {
+      "hash": "b9eda04f",
+      "content": [
+        {
+          "type": "text",
+          "text": "## Mentioned Vault Files (outline only)\n- `电子/电路原理/电阻电路方程.md`\n  - L1 ## KCL、KVL 独立方程个数\n  - L6 ## 网孔电流分析法\n  - L21 ## 回路电流分析法\n  - L26 ## 节点电压分析法\n\nThis section provides only paths and outlines. Use file tools only if you need the full contents or a specific line range.\n\n\n电阻电路方程.md 这找到两个\n\n"
+        }
+      ],
+      "createdAt": 1783044709492,
+      "updatedAt": 1783044709492
     }
   }
 }

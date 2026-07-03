@@ -3,7 +3,7 @@ title: 动态测试
 credate: 2026-07-03
 updated: 2026-07-03
 description: 一个动态
-image: posts/moments/images/wallhaven-n6r6m7.jpg
+image: ./images/wallhaven-n6r6m7.jpg
 tags:
   - 高兴
 category: 动态

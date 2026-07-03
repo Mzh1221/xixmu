@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "entries": {
+    "06469bdf": {
+      "hash": "06469bdf",
+      "content": [
+        {
+          "type": "text",
+          "text": "## Mentioned Vault Files (outline only)\n- `杂项/农业气象学.md`\n  - L1 # 题目梳理\n  - L2 ## 南北引种\n  - L23 # PPT 复习梳理\n  - L24 ## 大气\n  - L25 ### 大气的组成\n  - L36 ### 成分变化\n  - L42 ### 大气组成的细节\n  - L43 #### 氮气\n  - L45 #### 氧气\n  - L47 #### 臭氧\n  - L65 #### 二氧化碳\n  - L77 #### 水汽\n  - L89 #### 气溶胶粒子\n  - L99 ### 大气的垂直结构\n  - L101 #### 各层温度变化\n  - L103 #### 对流层\n  - L108 #### 平流层\n  - L113 #### 中间层\n  - L118 #### 电离层（热层）\n  - L120 #### 逸散层\n  - L124 ### 大气上界的确定\n  - L125 #### 物理高度\n  - L127 #### 密度高度\n  - L129 ## 辐射\n  - L130 ### 辐射的基本知识\n  - L148 ### 辐射的基本定理\n  - L149 #### 基尔霍夫定理\n  - L154 #### 斯蒂芬玻耳兹曼定律\n  - L161 #### 维恩位移定律\n  - L167 ### 太阳辐射\n  - L168 #### 太阳辐射强度和太阳常数\n  - L172 #### 太阳高度角\n  - L179 #### 昼长\n\nThis section provides only paths and outlines. Use file tools only if you need the full contents or a specific line range.\n\n\n农业气象学.md 这里有没有，有也改\n\n"
+        }
+      ],
+      "createdAt": 1783042182618,
+      "updatedAt": 1783042182618
+    }
+  }
+}

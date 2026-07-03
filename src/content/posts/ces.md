@@ -9,6 +9,6 @@ tags:
 category: 文章示例
 draft: false
 pinned: true
-pubdate: 2026-07-03
+published: 2026-07-03
 ---
 astro composer 好智能啊

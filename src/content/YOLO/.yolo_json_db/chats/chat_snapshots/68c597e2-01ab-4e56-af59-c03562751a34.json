@@ -33,6 +33,17 @@
       ],
       "createdAt": 1783042490893,
       "updatedAt": 1783042490893
+    },
+    "c123d5bf": {
+      "hash": "c123d5bf",
+      "content": [
+        {
+          "type": "text",
+          "text": "## Mentioned Vault Files (outline only)\n- `CS/MySQL/大题复习.md`\n  - L16 ## 题目 1：简单查询（WHERE + 排序）\n  - L34 ## 题目 2：多表连接（INNER JOIN）\n  - L55 ## 题目 3：分组统计（GROUP BY + 聚合函数）\n  - L81 ## 题目 4：子查询（IN / EXISTS）\n  - L118 ## 题目 5：综合大题（连接 + 分组 + 子查询）\n\nThis section provides only paths and outlines. Use file tools only if you need the full contents or a specific line range.\n\n\n大题复习.md 把里面代码块大写的SQL改成sql\n\n"
+        }
+      ],
+      "createdAt": 1783043232137,
+      "updatedAt": 1783043232137
     }
   }
 }

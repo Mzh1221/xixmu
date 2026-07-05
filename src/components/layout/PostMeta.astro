@@ -151,6 +151,7 @@ const path = customPath || (id ? `/posts/${id}` : "");
   }
   <!-- Waline访问量统计（首页不显示、仅type为waline时显示） -->
   {
+    !isHome &&
       commentConfig.type === 'waline' &&
       commentConfig.waline?.visitorCount &&
       id && (

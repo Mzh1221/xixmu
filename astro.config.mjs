@@ -134,7 +134,6 @@ export default defineConfig({
 			themes: [expressiveCodeConfig.darkTheme, expressiveCodeConfig.lightTheme],
 			useDarkModeMediaQuery: false,
 			themeCssSelector: (theme) => `[data-theme='${theme.name}']`,
-			lang: ['sql','python'],
 			plugins: [
 				// pluginLanguageBadge 配置 - 从expressiveCodeConfig读取设置
 				...(expressiveCodeConfig.pluginLanguageBadge?.enable === true

@@ -107,7 +107,7 @@ export const siteConfig: SiteConfig = {
 		// 番组计划页面开关，含追番、游戏、书籍和音乐
 		bangumi: false,
 		// 相册页面开关
-		gallery: true,
+		gallery: false,
 		// 追番页面开关
 		anime: false,
 	},

@@ -2,6 +2,7 @@
 slug: giscus-to-waline
 tags:
   - 达成
+  - 折腾
 title: 把评论从giscus改成waline
 published: 2026-07-05
 updated: 2026-07-05

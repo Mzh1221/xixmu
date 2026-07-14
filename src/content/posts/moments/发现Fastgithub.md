@@ -4,7 +4,7 @@ tags:
   - 发现
 title: 发现Fastgithub
 published: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-14
 category: 动态
 author: 惜夕暮
 ---
@@ -12,4 +12,6 @@ author: 惜夕暮
 
 [FastGithub](https://github.com/creazyboyone/FastGithub/releases/tag/v2.1.5)，刚刚试了， 然而卡巴斯基直接给我全删了，算了，就 watt toolkit 用用吧，这个最放心。
 
-看到[介绍steamcommunity302](https://www.bilibili.com/video/BV14z7p6dEyM) 又想要试试看了，之前卡巴斯基给干了，今天再试试，最新版在左边讨论区。
+看到[介绍steamcommunity302](https://www.bilibili.com/video/BV14z7p6dEyM) 又想要试试看了，之前卡巴斯基给干了，今天再试试。
+
+不错，好用的，给我 cloudflare 也顺便加速了，还有 vercel 也加速了。

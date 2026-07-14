@@ -73,10 +73,14 @@ export const siteConfig: SiteConfig = {
 		// 3. 本地图片（src目录，自动优化但会增加构建时间）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		// logo: {
-		logo:{ type: "url", value: "https://s41.ax1x.com/2026/07/11/pmsDpgU.png", alt: "Logo" },
-			// type: "image",
-			// value: "assets/images/firefly.png",
-			// alt: "🍀",
+		logo: {
+			type: "url",
+			value: "https://s41.ax1x.com/2026/07/11/pmsDpgU.png",
+			alt: "Logo",
+		},
+		// type: "image",
+		// value: "assets/images/firefly.png",
+		// alt: "🍀",
 		// },
 		// 导航栏标题
 		title: "Xixmu",

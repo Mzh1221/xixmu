@@ -49,6 +49,20 @@ for (const post of posts) {
 		totalWords += chineseChars.length + englishChars.length;
 	}
 }
+for (const dynamic of dynamics) {
+	if (dynamic.body) {
+		let text = dynamic.body
+			.replace(/```[\s\S]*?```/g, "")
+			.replace(/`[^`]*`/g, "")
+			.replace(/\s+/g, " ")
+			.trim();
+
+		const chineseChars = text.match(/[\u4e00-\u9fa5]/g) || [];
+		const englishChars = text.match(/[a-zA-Z]/g) || [];
+
+		totalWords += chineseChars.length + englishChars.length;
+	}
+}
 
 // 格式化数字（添加千位分隔符）
 function formatNumber(num: number): string {

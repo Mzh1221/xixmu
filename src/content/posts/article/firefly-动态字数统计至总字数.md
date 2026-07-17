@@ -3,6 +3,7 @@ slug: dynamic-to-total-word-count
 description: 如何让Firefly主题的动态字数也统计到总字数中
 tags:
   - 博客
+  - 教程
 category: 文章
 title: Firefly 如何把动态的字数也统计到总字数里
 published: 2026-07-17

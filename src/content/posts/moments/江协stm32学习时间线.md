@@ -4,7 +4,7 @@ tags:
   - 记录
 title: 江协STM32学习时间线
 published: 2026-07-15
-updated: 2026-07-17
+updated: 2026-07-19
 category: 动态
 author: 惜夕暮
 ---
@@ -21,3 +21,5 @@ author: 惜夕暮
 [[3-3 GPIO输入]]
 
 7-18  [[3-4 按键控制 LED&光敏传感器控制蜂鸣器]]
+
+7-19 [[4-1 OLED调试工具]] 

@@ -58,7 +58,7 @@ const adapter = process.env.CF_WORKERS
 export default defineConfig({
 	site: "https://gh.162351.xyz",
 
-	base: "/xixmu/",
+	base: "/",
 	trailingSlash: "always",
 
 	// 字体配置 - 只加载实际使用的字体，跳过未引用的以加快构建

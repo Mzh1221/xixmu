@@ -56,7 +56,7 @@ const adapter = process.env.CF_WORKERS
 
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.site_url,
+	site: "https://mzh1221.github.io",
 
 	base: "/xixmu/",
 	trailingSlash: "always",

@@ -132,8 +132,6 @@ export const siteConfig: SiteConfig = {
 		defaultMode: "grid",
 		// 移动端默认布局模式，不设置则跟随 defaultMode
 		mobileDefaultMode: "grid",
-		// 是否允许用户切换布局
-		allowSwitch: true,
 		// 文章简介显示行数，设为 0 则不截断
 		descriptionLines: 2,
 		// 文章卡片底部统计和发布日期是否显示图标
@@ -212,6 +210,10 @@ export const siteConfig: SiteConfig = {
 		// 可选值: "anime" | "book" | "music" | "game" | "real" (暂不支持"real"类型)
 		// 未列出的类型将按默认顺序排在后面
 		categoryOrder: ["anime", "book", "music", "game"],
+		// 控制各分类的启用状态（true/false），未指定的分类默认启用
+		// categories: {
+		// 	game: false, // 禁用游戏分类显示
+		// },
 	},
 
 	// 追番配置（Bilibili + TMDB）

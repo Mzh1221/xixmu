@@ -144,8 +144,6 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			interval: 5000,
 			// 过渡效果: 'fade' 渐变 | 'zoom' 缩放 | 'slide' 滑动 | 'kenburns' 旋转木马
 			transitionEffect: "fade",
-			// 是否允许用户通过控制面板切换壁纸轮播
-			switchable: true,
 		},
 	},
 	// Banner模式特有配置

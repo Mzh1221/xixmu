@@ -49,6 +49,8 @@ for (const post of posts) {
 		totalWords += chineseChars.length + englishChars.length;
 	}
 }
+
+// xixmu 后加的
 for (const dynamic of dynamics) {
 	if (dynamic.body) {
 		let text = dynamic.body
@@ -92,6 +94,15 @@ const stats = [
 		label: i18n(I18nKey.siteStatsPostCount),
 		value: posts.length,
 	},
+	...(siteConfig.pages.dynamic
+		? [
+				{
+					icon: "material-symbols:dynamic-feed-rounded",
+					label: i18n(I18nKey.siteStatsDynamicCount),
+					value: dynamics.length,
+				},
+			]
+		: []),
 	{
 		icon: "material-symbols:folder-outline",
 		label: i18n(I18nKey.siteStatsCategoryCount),

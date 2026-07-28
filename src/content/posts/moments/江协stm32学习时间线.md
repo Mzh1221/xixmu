@@ -4,7 +4,7 @@ tags:
   - 记录
 title: 江协STM32学习时间线
 published: 2026-07-15
-updated: 2026-07-26
+updated: 2026-07-27
 category: 动态
 author: 惜夕暮
 ---

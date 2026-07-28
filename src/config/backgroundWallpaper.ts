@@ -79,7 +79,10 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 主页横幅主标题字体大小
 			titleSize: "4.5rem",
 			// 主页横幅副标题
-			subtitle: "在记忆干枯前描绘。———— Yunyi Tang",
+			subtitle: [
+				"在记忆干枯前描绘。",
+				"有惊无险，失而复得，虚惊一场。"
+			],
 			// subtitle: [
 			// 	"In Reddened Chrysalis, I Once Rest",
 			// 	"From Shattered Sky, I Free Fall",
@@ -120,9 +123,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		waves: {
 			enable: {
 				// 桌面端是否启用水波纹动画效果
-				desktop: true,
+				desktop: false,
 				// 移动端是否启用水波纹动画效果
-				mobile: true,
+				mobile: false,
 			},
 		},
 		// 渐变过渡效果配置，当水波纹关闭时自动启用，提供壁纸底部到背景色的平滑过渡

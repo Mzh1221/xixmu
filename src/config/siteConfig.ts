@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Blog",
 
 	// 站点 URL
-	site_url: "https://162351.xyz",
+	site_url: "https://www.xixmu.top",
 
 	// 站点描述
 	description:

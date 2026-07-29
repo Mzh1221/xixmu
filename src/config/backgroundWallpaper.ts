@@ -79,10 +79,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 主页横幅主标题字体大小
 			titleSize: "4.5rem",
 			// 主页横幅副标题
-			subtitle: [
-				"在记忆干枯前描绘。",
-				"有惊无险，失而复得，虚惊一场。"
-			],
+			subtitle: ["在记忆干枯前描绘。", "有惊无险，失而复得，虚惊一场。"],
 			// subtitle: [
 			// 	"In Reddened Chrysalis, I Once Rest",
 			// 	"From Shattered Sky, I Free Fall",

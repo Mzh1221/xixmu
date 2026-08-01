@@ -11,7 +11,7 @@ export type WidgetComponentType =
 	| "music"
 	| "siteInfo"
 	| "dynamic"
-    | "timeGreeting";
+	| "timeGreeting";
 
 export type WidgetComponentConfig = {
 	type: WidgetComponentType; // 组件类型

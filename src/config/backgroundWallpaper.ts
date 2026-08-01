@@ -81,8 +81,22 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 主页横幅副标题
 			subtitle: [
 				"在记忆干枯前描绘。",
-				"有惊无险，失而复得，虚惊一场。",
-				"我MYGO了。"
+				"有惊无险, 失而复得, 虚惊一场。",
+				"我MYGO了。",
+				"我欲乘风归去, 又恐Ciallo~(∠・ω< )⌒☆玉宇",
+				"一点寒芒先到, 随后Cia出如llo~(∠・ω< )⌒☆",
+				"欲穷千里目, 更上一ciallo~(∠・ω< )⌒☆",
+				"问君能有几多愁, cia似一江春水向东llo~(∠・ω< )⌒☆",
+				"昔人已cia黄鹤去, 此地空余黄鹤llo~(∠・ω< )⌒☆",
+				"青青子衿悠悠我心但为君故cia llo~(∠・ω< )⌒☆至今",
+				"黄沙百战cia金甲, 不破llo~(∠・ω< )⌒☆兰终不还",
+				"一身转战三cia llo~(∠・ω< )⌒☆, 一剑曾当百万师",
+				"杨柳cia cia江水平, 问llo~(∠・ω< )⌒☆江上歌唱声",
+				"朝cia白帝cia云间, 千里江llo~(∠・ω< )⌒☆一日还",
+				"桃花潭水深cia尺, 不及汪llo~(∠・ω< )⌒☆送我情",
+				"小cia llo~(∠・ω< )⌒☆水人家",
+				"信不信我一把Cia住你喉llo~(∠・ω< )⌒☆",
+				"时间cia不多得llo~(∠・ω< )⌒☆",
 			],
 			// subtitle: [
 			// 	"In Reddened Chrysalis, I Once Rest",

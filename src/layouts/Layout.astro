@@ -8,6 +8,7 @@ import FontSetup from "@components/features/FontSetup.astro";
 import MusicManager from "@components/features/MusicManager.astro";
 import SakuraEffect from "@components/features/SakuraEffect.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
+import WelcomeToast from "@components/widget/WelcomeToast.astro";
 
 import {
 	analyticsConfig,
@@ -596,6 +597,7 @@ const siteLang = lang.replace("_", "-");
 
     <!-- Sakura Effect -->
     <SakuraEffect />
+    <WelcomeToast />
 
     <!-- Fancybox Manager -->
     <FancyboxManager />

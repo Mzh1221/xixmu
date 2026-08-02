@@ -49,7 +49,8 @@ function renderContent(text: string): string {
 					已学习 <strong>{totalDays}</strong> 天
 				</span>
 				<span class="tl-stat">
-					完成 <strong>{totalCourses}</strong> 课
+					完成 <strong>{totalCourses}</strong>
+					{target > 0 && <>/{target}</>} 课
 				</span>
 				{target > 0 && (
 					<div class="tl-progress">
@@ -60,6 +61,7 @@ function renderContent(text: string): string {
 					</div>
 				)}
 			</div>
+			<div class="tl-list">
 			{items.map((item) => (
 				<div class="tl-row">
 					<div class="tl-rail" aria-hidden="true">
@@ -71,6 +73,7 @@ function renderContent(text: string): string {
 					</div>
 				</div>
 			))}
+			</div>
 		</div>
 	) : (
 		<p class="tl-empty">暂无学习记录</p>
@@ -86,12 +89,16 @@ function renderContent(text: string): string {
 		border-radius: var(--radius-large);
 	}
 
-	/* 贯穿虚线竖线 */
-	.learning-timeline::before {
+	/* 条目区：竖线只画在列表区域，不穿过统计条 */
+	.tl-list {
+		position: relative;
+	}
+
+	.tl-list::before {
 		content: "";
 		position: absolute;
-		top: 1.5rem;
-		bottom: 1.25rem;
+		top: 0.5rem;
+		bottom: 0.25rem;
 		left: calc(1.5rem + 1rem - 1px);
 		width: 2px;
 		border-left: 2px dashed color-mix(in srgb, var(--line-color) 85%, transparent);
@@ -101,6 +108,7 @@ function renderContent(text: string): string {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		justify-content: flex-end;
 		gap: 0.625rem 1.25rem;
 		margin-bottom: 0.875rem;
 		padding: 0.625rem 0.875rem;
@@ -214,7 +222,7 @@ function renderContent(text: string): string {
 			padding: 1rem 1rem 0.75rem;
 		}
 
-		.learning-timeline::before {
+		.tl-list::before {
 			left: calc(1rem + 0.75rem - 1px);
 		}
 

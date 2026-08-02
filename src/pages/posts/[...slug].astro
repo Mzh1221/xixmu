@@ -305,7 +305,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
       {entry.data.password ? (
         <EncryptedPost password={entry.data.password} slug={entry.id} hint={entry.data.passwordHint}>
           {entry.data.timeline ? (
-            <LearningTimeline body={entry.body} />
+            <LearningTimeline body={entry.body} target={entry.data.timelineTotal} />
           ) : (
             <Markdown class="mb-6 markdown-content onload-animation">
               <Content />
@@ -399,7 +399,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
       ) : (
         <>
           {entry.data.timeline ? (
-            <LearningTimeline body={entry.body} />
+            <LearningTimeline body={entry.body} target={entry.data.timelineTotal} />
           ) : (
             <Markdown class="mb-6 markdown-content onload-animation">
               <Content />

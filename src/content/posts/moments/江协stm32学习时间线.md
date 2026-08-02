@@ -5,9 +5,10 @@ tags:
 title: 江协STM32学习时间线
 published: 2026-07-15
 updated: 2026-08-02
-category: 动态
+category: 追踪
 author: 惜夕暮
 timeline: true
+timelineTotal: 30
 ---
 7-12 [[1-1 课程简介]] [[1-2 STM 简介]]
 

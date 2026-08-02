@@ -6,9 +6,11 @@
  */
 interface Props {
 	body: string;
+	/** 目标课程数，设置后显示完成度进度条 */
+	target?: number;
 }
 
-const { body } = Astro.props;
+const { body, target = 0 } = Astro.props;
 
 // 解析每行：MM-DD 内容...
 const lines = body
@@ -20,6 +22,14 @@ const items = lines.map((line) => {
 	const m = line.match(/^(\d{1,2}-\d{1,2})\s*(.*)$/);
 	return { date: m?.[1] ?? "", content: m?.[2] ?? "" };
 });
+
+// 进度统计
+const totalDays = items.length;
+const totalCourses = items.reduce(
+	(sum, item) => sum + (item.content.match(/\[\[[^\]]+\]\]/g)?.length ?? 0),
+	0,
+);
+const pct = target > 0 ? Math.min(100, Math.round((totalCourses / target) * 100)) : 0;
 
 // [[xxx]] → /posts/xxx/ 链接（与 Firefly remark-wiki-link 一致）
 function renderContent(text: string): string {
@@ -34,6 +44,22 @@ function renderContent(text: string): string {
 {
 	items.length > 0 ? (
 		<div class="learning-timeline">
+			<div class="tl-stats">
+				<span class="tl-stat">
+					已学习 <strong>{totalDays}</strong> 天
+				</span>
+				<span class="tl-stat">
+					完成 <strong>{totalCourses}</strong> 课
+				</span>
+				{target > 0 && (
+					<div class="tl-progress">
+						<div class="tl-progress-bar">
+							<div class="tl-progress-fill" style={`width: ${pct}%`} />
+						</div>
+						<span class="tl-progress-label">{pct}%</span>
+					</div>
+				)}
+			</div>
 			{items.map((item) => (
 				<div class="tl-row">
 					<div class="tl-rail" aria-hidden="true">
@@ -69,6 +95,55 @@ function renderContent(text: string): string {
 		left: calc(1.5rem + 1rem - 1px);
 		width: 2px;
 		border-left: 2px dashed color-mix(in srgb, var(--line-color) 85%, transparent);
+	}
+
+	.tl-stats {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.625rem 1.25rem;
+		margin-bottom: 0.875rem;
+		padding: 0.625rem 0.875rem;
+		border-radius: calc(var(--radius-large) - 0.375rem);
+		background: color-mix(in srgb, var(--primary) 8%, transparent);
+		color: var(--content-meta);
+		font-size: 0.85rem;
+	}
+
+	.tl-stat strong {
+		color: var(--primary);
+		font-weight: 700;
+	}
+
+	.tl-progress {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-left: auto;
+		min-width: 10rem;
+	}
+
+	.tl-progress-bar {
+		flex: 1;
+		height: 0.5rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--content-meta) 18%, transparent);
+		overflow: hidden;
+	}
+
+	.tl-progress-fill {
+		height: 100%;
+		border-radius: 999px;
+		background: var(--primary);
+		transition: width 0.4s ease;
+	}
+
+	.tl-progress-label {
+		font-size: 0.78rem;
+		color: var(--primary);
+		font-weight: 600;
+		min-width: 2.5rem;
+		text-align: right;
 	}
 
 	.tl-row {

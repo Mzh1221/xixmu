@@ -808,3 +808,86 @@ body.wallpaper-transparent .dynamic-year-select select option {
 		flex-basis: 3.25rem;
 	}
 }
+
+/* ============================================================
+ * 动态时间线样式（timeline + 卡片）
+ * 竖线 + 节点串联，内容块保留卡片
+ * ============================================================ */
+.dynamic-feed {
+	position: relative;
+	padding-block: 0.5rem;
+}
+
+/* 纵向主线：渐变虚线 */
+.dynamic-feed::before {
+	content: "";
+	position: absolute;
+	top: 1.5rem;
+	bottom: 1.25rem;
+	left: 2.25rem;
+	width: 3px;
+	border-radius: 3px;
+	background: linear-gradient(
+		to bottom,
+		color-mix(in srgb, var(--primary) 88%, transparent),
+		color-mix(in srgb, var(--primary) 42%, transparent)
+	);
+}
+
+/* 条目：整体右移，保留卡片外观 */
+.dynamic-feed .dynamic-entry {
+	position: relative;
+	overflow: visible;
+	margin-left: 3rem;
+	padding: 1.125rem;
+	background: var(--card-bg);
+	border: 1px solid color-mix(in srgb, var(--line-divider) 65%, transparent);
+	border-radius: var(--radius-large);
+	box-shadow: 0 1px 2px color-mix(in srgb, #000000 5%, transparent);
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
+}
+
+/* hover：轻微上浮 + 主题色描边 */
+.dynamic-feed .dynamic-entry:hover {
+	border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+	box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 14%, transparent);
+	transform: translateY(-1px);
+}
+
+/* 时间线节点 */
+.dynamic-feed .dynamic-entry::before {
+	content: "";
+	position: absolute;
+	top: 2rem;
+	left: 2.25rem;
+	width: 0.95rem;
+	height: 0.95rem;
+	border-radius: 50%;
+	background: var(--primary);
+	border: 3px solid var(--bg, #ffffff);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 28%, transparent);
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+/* 移动端 */
+@media (max-width: 640px) {
+	.dynamic-feed::before {
+		left: 1.25rem;
+	}
+
+	.dynamic-feed .dynamic-entry {
+		margin-left: 1.75rem;
+		padding: 1rem;
+	}
+
+	.dynamic-feed .dynamic-entry::before {
+		top: 1.75rem;
+		left: 1.25rem;
+		width: 0.8rem;
+		height: 0.8rem;
+	}
+}

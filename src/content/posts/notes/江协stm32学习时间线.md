@@ -10,7 +10,7 @@ author: 惜夕暮
 timeline: true
 timelineTotal: 50
 ---
-7-12 [[1-1 课程简介]] [[1-2 STM 简介]]
+7-12 [[1-1-课程介绍]] [[1-2 STM 简介]]
 
 7-13 [[2-1 软件安装]]
 
@@ -50,4 +50,4 @@ timelineTotal: 50
 
 8-1 [[9-5 串口收发HEX数据包&文本数据包]]
 
-8-2 [[9-6 FlyMcu串口下载&STLINKUtility]]
+8-2 [[mcu|9-6-fly-mcu串口下载stlink-ut3ility]]

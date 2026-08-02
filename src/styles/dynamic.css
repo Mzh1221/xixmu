@@ -810,84 +810,88 @@ body.wallpaper-transparent .dynamic-year-select select option {
 }
 
 /* ============================================================
- * 动态时间线样式（timeline + 卡片）
- * 竖线 + 节点串联，内容块保留卡片
+ * 动态时间线样式（复刻归档页：虚线竖线 + 小圆点 + 整体卡片）
  * ============================================================ */
 .dynamic-feed {
 	position: relative;
-	padding-block: 0.5rem;
+	padding: 1.5rem 1.5rem 1rem;
+	background: var(--card-bg);
+	border: 1px solid color-mix(in srgb, var(--line-divider) 50%, transparent);
+	border-radius: var(--radius-large);
 }
 
-/* 纵向主线：渐变虚线 */
+/* 贯穿虚线竖线（归档 dash-line 同款：2px dashed） */
 .dynamic-feed::before {
 	content: "";
 	position: absolute;
 	top: 1.5rem;
 	bottom: 1.25rem;
-	left: 2.25rem;
-	width: 3px;
-	border-radius: 3px;
-	background: linear-gradient(
-		to bottom,
-		color-mix(in srgb, var(--primary) 88%, transparent),
-		color-mix(in srgb, var(--primary) 42%, transparent)
-	);
+	left: 1.625rem;
+	width: 2px;
+	border-left: 2px dashed color-mix(in srgb, var(--line-color) 85%, transparent);
 }
 
-/* 条目：整体右移，保留卡片外观 */
+/* 条目：时间线行（透明，无独立卡片） */
 .dynamic-feed .dynamic-entry {
 	position: relative;
 	overflow: visible;
-	margin-left: 3rem;
-	padding: 1.125rem;
-	background: var(--card-bg);
-	border: 1px solid color-mix(in srgb, var(--line-divider) 65%, transparent);
-	border-radius: var(--radius-large);
-	box-shadow: 0 1px 2px color-mix(in srgb, #000000 5%, transparent);
-	transition:
-		border-color 0.2s ease,
-		box-shadow 0.2s ease,
-		transform 0.2s ease;
+	padding: 0.75rem 0.25rem 1.25rem 2.75rem;
 }
 
-/* hover：轻微上浮 + 主题色描边 */
-.dynamic-feed .dynamic-entry:hover {
-	border-color: color-mix(in srgb, var(--primary) 45%, transparent);
-	box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 14%, transparent);
-	transform: translateY(-1px);
-}
-
-/* 时间线节点：相对卡片左缘负偏移，落在竖线上（2.25rem-3rem=-0.75rem） */
-.dynamic-feed .dynamic-entry::before {
+/* 节点：小圆点 + 描边（归档同款质感） */
+.dynamic-feed .dynamic-entry::after {
 	content: "";
 	position: absolute;
-	top: 2rem;
-	left: -0.75rem;
-	width: 0.95rem;
-	height: 0.95rem;
+	top: 1.05rem;
+	left: 1.625rem;
+	width: 0.5rem;
+	height: 0.5rem;
 	border-radius: 50%;
-	background: var(--primary);
-	border: 3px solid var(--bg, #ffffff);
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 28%, transparent);
+	background: oklch(0.5 0.05 var(--hue));
+	border: 2.5px solid var(--card-bg);
+	box-shadow: 0 0 0 1px color-mix(in srgb, var(--line-color) 55%, transparent);
 	transform: translate(-50%, -50%);
-	z-index: 1;
+}
+
+/* 时间：左上角小字 */
+.dynamic-feed .dynamic-timeline-head .dynamic-time {
+	width: fit-content;
+	color: var(--content-meta);
+	font-size: 0.75rem;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+.dynamic-feed .dynamic-timeline-head .dynamic-time:hover {
+	color: var(--primary);
+}
+
+/* 内容区：去掉原卡片布局的左侧缩进 */
+.dynamic-feed .dynamic-content,
+.dynamic-feed .dynamic-gallery,
+.dynamic-feed .dynamic-inline-comments {
+	margin-left: 0;
+}
+
+.dynamic-feed .dynamic-content {
+	margin-top: 0.375rem;
 }
 
 /* 移动端 */
 @media (max-width: 640px) {
+	.dynamic-feed {
+		padding: 1.25rem 1rem 0.75rem;
+	}
+
 	.dynamic-feed::before {
-		left: 1.25rem;
+		left: 1.125rem;
 	}
 
 	.dynamic-feed .dynamic-entry {
-		margin-left: 1.75rem;
-		padding: 1rem;
+		padding: 0.625rem 0.25rem 1.25rem 2rem;
 	}
 
-	.dynamic-feed .dynamic-entry::before {
-		top: 1.75rem;
-		left: -0.5rem; /* 1.25rem-1.75rem=-0.5rem */
-		width: 0.8rem;
-		height: 0.8rem;
+	.dynamic-feed .dynamic-entry::after {
+		left: 1.125rem;
 	}
 }

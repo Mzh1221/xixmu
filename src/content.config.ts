@@ -51,6 +51,7 @@ const postsCollection: ContentCollection<PostData> = defineCollection({
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
 		pinned: z.boolean().optional().default(false),
+		timeline: z.boolean().optional().default(false),
 		author: z.string().optional().default(""),
 		sourceLink: z.string().optional().default(""),
 		licenseName: z.string().optional().default(""),
@@ -78,6 +79,7 @@ const dynamicCollection: ContentCollection<DynamicData> = defineCollection({
 	schema: z.object({
 		published: z.date(),
 		pinned: z.boolean().optional().default(false),
+		timeline: z.boolean().optional().default(false),
 		location: z.string().optional().default(""),
 	}),
 });

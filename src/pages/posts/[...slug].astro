@@ -2,6 +2,7 @@
 import { render } from "astro:content";
 import Comment from "@components/comment/index.astro";
 import Markdown from "@components/common/Markdown.astro";
+import LearningTimeline from "@components/features/LearningTimeline.astro";
 import EncryptedPost from "@components/features/EncryptedPost.astro";
 import KatexManager from "@components/features/KatexManager.astro";
 import License from "@components/misc/License.astro";
@@ -303,9 +304,13 @@ const relatedPosts = await getRelatedPosts(entry, 5);
 
       {entry.data.password ? (
         <EncryptedPost password={entry.data.password} slug={entry.id} hint={entry.data.passwordHint}>
-          <Markdown class="mb-6 markdown-content onload-animation">
-            <Content />
-          </Markdown>
+          {entry.data.timeline ? (
+            <LearningTimeline body={entry.body} />
+          ) : (
+            <Markdown class="mb-6 markdown-content onload-animation">
+              <Content />
+            </Markdown>
+          )}
 
           {/* 打赏按钮 & 分享按钮 */}
           {
@@ -393,9 +398,13 @@ const relatedPosts = await getRelatedPosts(entry, 5);
         </EncryptedPost>
       ) : (
         <>
-          <Markdown class="mb-6 markdown-content onload-animation">
-            <Content />
-          </Markdown>
+          {entry.data.timeline ? (
+            <LearningTimeline body={entry.body} />
+          ) : (
+            <Markdown class="mb-6 markdown-content onload-animation">
+              <Content />
+            </Markdown>
+          )}
 
           {/* 打赏按钮 & 分享按钮 */}
           {

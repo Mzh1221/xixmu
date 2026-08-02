@@ -1,0 +1,151 @@
+---
+/**
+ * LearningTimeline — 学习进度时间线组件
+ * 解析「MM-DD 课程」格式的正文，渲染为时间线（竖线+节点+日期+课程链接）
+ * 用法：文章 frontmatter 加 timeline: true 即可自动启用
+ */
+interface Props {
+	body: string;
+}
+
+const { body } = Astro.props;
+
+// 解析每行：MM-DD 内容...
+const lines = body
+	.split("\n")
+	.map((l) => l.trim())
+	.filter((l) => /^\d{1,2}-\d{1,2}(\s|$)/.test(l));
+
+const items = lines.map((line) => {
+	const m = line.match(/^(\d{1,2}-\d{1,2})\s*(.*)$/);
+	return { date: m?.[1] ?? "", content: m?.[2] ?? "" };
+});
+
+// [[xxx]] → /posts/xxx/ 链接（与 Firefly remark-wiki-link 一致）
+function renderContent(text: string): string {
+	return text.replace(/\[\[([^[\]\n]+)\]\]/g, (_, target: string) => {
+		const slug = target.trim();
+		const href = `/posts/${encodeURIComponent(slug)}/`;
+		return `<a href="${href}">${slug}</a>`;
+	});
+}
+---
+
+{
+	items.length > 0 ? (
+		<div class="learning-timeline">
+			{items.map((item) => (
+				<div class="tl-row">
+					<div class="tl-rail" aria-hidden="true">
+						<span class="tl-node" />
+					</div>
+					<div class="tl-body">
+						<div class="tl-date">{item.date}</div>
+						<div class="tl-content" set:html={renderContent(item.content)} />
+					</div>
+				</div>
+			))}
+		</div>
+	) : (
+		<p class="tl-empty">暂无学习记录</p>
+	)
+}
+
+<style>
+	.learning-timeline {
+		position: relative;
+		padding: 1.25rem 1.5rem 1rem;
+		background: var(--card-bg);
+		border: 1px solid color-mix(in srgb, var(--line-divider) 50%, transparent);
+		border-radius: var(--radius-large);
+	}
+
+	/* 贯穿虚线竖线 */
+	.learning-timeline::before {
+		content: "";
+		position: absolute;
+		top: 1.5rem;
+		bottom: 1.25rem;
+		left: calc(1.5rem + 1rem - 1px);
+		width: 2px;
+		border-left: 2px dashed color-mix(in srgb, var(--line-color) 85%, transparent);
+	}
+
+	.tl-row {
+		display: grid;
+		grid-template-columns: 2rem 1fr;
+		gap: 0.875rem;
+		padding: 0.5rem 0 0.75rem;
+	}
+
+	.tl-rail {
+		position: relative;
+	}
+
+	/* 节点：小圆点 + 描边（与动态页一致） */
+	.tl-node {
+		position: absolute;
+		top: 0.4rem;
+		left: 50%;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		background: oklch(0.5 0.05 var(--hue));
+		border: 2.5px solid var(--card-bg);
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--line-color) 55%, transparent);
+		transform: translateX(-50%);
+	}
+
+	.tl-body {
+		min-width: 0;
+	}
+
+	/* 日期：左上角小字 */
+	.tl-date {
+		margin-bottom: 0.125rem;
+		color: var(--content-meta);
+		font-size: 0.75rem;
+		line-height: 1.4;
+	}
+
+	/* 课程内容 */
+	.tl-content {
+		color: rgb(0 0 0 / 90%);
+		font-size: 0.95rem;
+		line-height: 1.75;
+		overflow-wrap: anywhere;
+	}
+
+	.tl-content :global(a) {
+		margin-right: 0.875rem;
+		color: var(--primary);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.tl-content :global(a:hover) {
+		text-decoration: underline;
+	}
+
+	.tl-empty {
+		color: var(--content-meta);
+		font-size: 0.9rem;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	@media (max-width: 640px) {
+		.learning-timeline {
+			padding: 1rem 1rem 0.75rem;
+		}
+
+		.learning-timeline::before {
+			left: calc(1rem + 0.75rem - 1px);
+		}
+
+		.tl-row {
+			grid-template-columns: 1.5rem 1fr;
+			gap: 0.625rem;
+		}
+	}
+</style>

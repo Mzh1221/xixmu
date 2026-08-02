@@ -33,11 +33,15 @@ const pct = target > 0 ? Math.min(100, Math.round((totalCourses / target) * 100)
 
 // [[xxx]] → /posts/xxx/ 链接（与 Firefly remark-wiki-link 一致）
 function renderContent(text: string): string {
-	return text.replace(/\[\[([^[\]\n]+)\]\]/g, (_, target: string) => {
-		const slug = target.trim();
-		const href = `/posts/${encodeURIComponent(slug)}/`;
-		return `<a href="${href}">${slug}</a>`;
-	});
+	return text.replace(
+		/\[\[([^[\]\n]+?)(?:\|([^[\]\n]*))?\]\]/g,
+		(_: string, target: string, alias?: string) => {
+			const slug = target.trim();
+			const label = (alias && alias.trim()) || slug;
+			const href = `/posts/${encodeURIComponent(slug)}/`;
+			return `<a href="${href}">${label}</a>`;
+		},
+	);
 }
 ---
 

@@ -2,9 +2,9 @@
 slug: fastgithub
 tags:
   - 发现
-title: 发现Fastgithub
+title: 发现Steamcommunity302
 published: 2026-07-10
-updated: 2026-07-14
+updated: 2026-08-04
 category: 动态
 author: 惜夕暮
 ---
@@ -15,3 +15,5 @@ author: 惜夕暮
 看到[介绍steamcommunity302](https://www.bilibili.com/video/BV14z7p6dEyM) 又想要试试看了，之前卡巴斯基给干了，今天再试试。
 
 不错，好用的，给我 cloudflare 也顺便加速了，还有 vercel 也加速了。
+
+更新：很好用 [Steamcommunity 302 Ver.14.0.02 – Dogfight360](https://www.dogfight360.com/blog/18682/) ,比 watt tookit 要更无感顺手

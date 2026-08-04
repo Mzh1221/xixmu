@@ -3,7 +3,7 @@ slug: Recordly
 tags:
   - 发现
   - 推荐
-title: 发现recordly
+title: 发现Recordly
 published: 2026-07-10
 updated: 2026-07-10
 category: 动态

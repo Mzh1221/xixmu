@@ -7,6 +7,7 @@ published: 2026-07-05
 updated: 2026-07-05
 category: 动态
 author: 惜夕暮
+draft: true
 ---
 凌晨刷视频刷到：当你意识到我们是地球上最后一代知道 AI 之前的生活是什么样子的人时。
 

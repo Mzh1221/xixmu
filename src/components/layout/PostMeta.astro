@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { commentConfig } from "@/config";
+import { analyticsConfig, commentConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
@@ -29,6 +29,8 @@ export interface Props {
 	showWords?: boolean;
 	showReadingTime?: boolean;
 	variant?: "default" | "cover";
+	/** 是否显示 Umami 浏览量（文章详情页启用） */
+	showViews?: boolean;
 }
 
 const {
@@ -54,9 +56,14 @@ const {
 	showReadingTime = false,
 	password,
 	variant = "default",
+	showViews = false,
 } = Astro.props;
 
 const path = customPath || (id ? `/posts/${id}` : "");
+const umamiViews = analyticsConfig.umamiAnalytics;
+const viewsEnabled = Boolean(
+	showViews && umamiViews?.shareId && umamiViews.shareApiBase && path,
+);
 const visibleTags =
 	typeof maxTags === "number" ? tags?.slice(0, maxTags) : tags;
 ---
@@ -257,6 +264,24 @@ const visibleTags =
   }
 
   {
+    viewsEnabled && (
+      <div
+        class="flex items-center"
+        data-umami-pv-path={path}
+        data-umami-share-id={umamiViews?.shareId}
+        data-umami-api-base={umamiViews?.shareApiBase}
+      >
+        <div class="meta-icon">
+          <Icon is:inline name="material-symbols:visibility-outline-rounded" class="text-xl" />
+        </div>
+        <span class="text-50 text-sm font-medium" data-umami-pv-value>
+          {i18n(I18nKey.pageViewsLoading)}
+        </span>
+      </div>
+    )
+  }
+
+  {
     showWords && typeof words === "number" && (
       <div class="flex items-center">
         <div class="meta-icon">
@@ -345,3 +370,79 @@ const visibleTags =
     }
   }
 </style>
+
+{
+	viewsEnabled && (
+		<script is:inline data-swup-ignore-script>
+			(() => {
+				const CACHE_KEYS = { share: "umami_share", metrics: "umami_metrics" };
+				const TTL = { share: 86400000, metrics: 300000 };
+
+				function getCache(key, ttl) {
+					try {
+						const raw = localStorage.getItem(key);
+						if (!raw) return null;
+						const parsed = JSON.parse(raw);
+						return Date.now() - parsed.ts < ttl ? parsed.val : null;
+					} catch { return null; }
+				}
+				function setCache(key, val) {
+					try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), val })); } catch {}
+				}
+
+				async function fillViews() {
+					const placeholders = document.querySelectorAll("[data-umami-pv-value]");
+					if (!placeholders.length) return;
+					const holder = placeholders[0].closest("[data-umami-pv-path]");
+					if (!holder) return;
+					const apiBase = holder.getAttribute("data-umami-api-base");
+					const shareId = holder.getAttribute("data-umami-share-id");
+					if (!apiBase || !shareId) return;
+					try {
+						let shareData = getCache(CACHE_KEYS.share, TTL.share);
+						if (!shareData) {
+							const res = await fetch(`${apiBase}/api/share/${shareId}`);
+							if (!res.ok) return;
+							shareData = await res.json();
+							setCache(CACHE_KEYS.share, shareData);
+						}
+						let rows = getCache(CACHE_KEYS.metrics, TTL.metrics);
+						if (!rows) {
+							const res = await fetch(
+								`${apiBase}/api/websites/${shareData.websiteId}/metrics?type=path&startAt=0&endAt=${Date.now()}&limit=1000`,
+								{
+									headers: {
+										"x-umami-share-token": shareData.token,
+										"x-umami-share-context": "1",
+									},
+								},
+							);
+							if (!res.ok) return;
+							rows = await res.json();
+							setCache(CACHE_KEYS.metrics, rows);
+						}
+						const norm = (p) => p.replace(/\/+$/, "").toLowerCase();
+						const lookup = new Map(rows.map((r) => [norm(r.x), r.y]));
+						document.querySelectorAll("[data-umami-pv-value]").forEach((el) => {
+							const holder = el.closest("[data-umami-pv-path]");
+							const p = holder?.getAttribute("data-umami-pv-path");
+							el.textContent = p ? (lookup.get(norm(p)) ?? 0).toLocaleString("en-US") : "0";
+						});
+					} catch {
+						document.querySelectorAll("[data-umami-pv-value]").forEach((el) => {
+							el.textContent = "—";
+						});
+					}
+				}
+
+				if (document.readyState === "loading") {
+					document.addEventListener("DOMContentLoaded", fillViews, { once: true });
+				} else {
+					fillViews();
+				}
+				document.addEventListener("astro:page-load", fillViews);
+			})();
+		</script>
+	)
+}
+

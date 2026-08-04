@@ -10,9 +10,13 @@ export const analyticsConfig: AnalyticsConfig = {
 		// Umami Website ID
 		websiteId: "0d29f259-d8a7-4d0b-a39e-9a58502fa2a2",
 		// Umami JS地址，支持使用自建
-		scriptUrl: "https://cloud.umami.is/script.js",
+		scriptUrl: "https://umami.xixmu.top/script.js",
 		// Umami 会话回放脚本地址，支持使用自建
 		replaysScriptUrl: "https://cloud.umami.is/recorder.js",
+		// Umami 公开分享 ID（Umami 后台「分享」功能生成，用于前端展示浏览量）
+		shareId: "EphaYxG9wp5XPJaR",
+		// Umami 实例地址（Share API 查询用）
+		shareApiBase: "https://umami.xixmu.top",
 		// 是否追踪出站链接
 		trackOutboundLinks: true,
 		// 是否收集浏览器性能指标
@@ -33,12 +37,12 @@ export const analyticsConfig: AnalyticsConfig = {
 	},
 	// 51la 统计配置
 	la51Analytics: {
-		// 51la 统计 ID
-		Id: "3QT4rQ29qGDjH2ab",
+		// 51la 统计 ID（留空则不启用）
+		Id: "",
 		// 自定义 SDK JS 地址，防止 DNS 污染，留空使用默认地址
 		sdkUrl: "//sdk.51.la/js-sdk-pro.min.js",
 		// 多个统计 ID 的数据分离标识，留空则使用 Id
-		ck: "3QT4rQ29qGDjH2ab",
+		ck: "",
 		// 是否开启事件分析功能
 		autoTrack: true,
 		//  Hash路由模式, 项目使用History API路由, 所以不必开启默认false

@@ -189,8 +189,6 @@ const relatedPosts = await getRelatedPosts(entry, 5);
                 category={entry.data.category || undefined}
                 tags={entry.data.tags}
                 id={entry.id}
-                showViews
-                customPath={Astro.url.pathname}
               />
             </div>
           </div>
@@ -275,8 +273,6 @@ const relatedPosts = await getRelatedPosts(entry, 5);
             <PostMetadata
               className="mb-5"
               published={entry.data.published}
-              showViews
-              customPath={Astro.url.pathname}
               updated={entry.data.updated}
               tags={entry.data.tags}
               category={entry.data.category || undefined}

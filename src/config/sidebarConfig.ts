@@ -127,6 +127,13 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			showOnPostPage: true,
 		},
 		{
+			// 组件类型：Umami 访问统计卡片
+			type: "umamiStats",
+			enable: true,
+			position: "top",
+			showOnPostPage: true,
+		},
+		{
 			// 组件类型：站点统计组件
 			type: "stats",
 			// 是否启用该组件

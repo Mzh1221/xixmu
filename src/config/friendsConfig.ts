@@ -59,7 +59,17 @@ export const friendsConfig: FriendLink[] = [
 		desc: "分享生活和技术。",
 		siteurl: "https://blog.amamo.top",
 		tags: ["Blog"],
-		weight: 1, // 权重，数字越大排序越靠前
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "Olinl Blog",
+		imgurl:
+			"https://blog.olinl.com/assets/images/avatar.webp",
+		desc: "分享、实践、学习",
+		siteurl: "https://blog.olinl.com",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	}
 ];

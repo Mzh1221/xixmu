@@ -1,0 +1,135 @@
+
+> firefly@6.15.2 build D:\xixmu
+> npx tsx scripts/generate-lqips.ts && astro build && npx tsx scripts/subset-fonts.ts && pagefind --site dist
+
+npm warn Unknown project config "manage-package-manager-versions". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+Loaded 4 existing entries from src/constants/lqips.json
+Found 4 images, 0 new to process.
+
+Done! Processed 0/0 new images. Total: 4. Output: src/constants/lqips.json
+[2m09:12:25[22m [34m[content][39m Syncing content
+[2m09:12:25[22m [34m[content][39m Synced content
+[2m09:12:26[22m [34m[types][39m Generated [2m858ms[22m
+[2m09:12:26[22m [34m[build][39m output: [34m"static"[39m
+[2m09:12:26[22m [34m[build][39m mode: [34m"static"[39m
+[2m09:12:26[22m [34m[build][39m directory: [34mD:\xixmu\dist\[39m
+[2m09:12:26[22m [34m[build][39m Collecting build info...
+[2m09:12:26[22m [34m[build][39m [32m✓ Completed in 1.32s.[39m
+[2m09:12:26[22m [34m[build][39m Building static entrypoints...
+[2m09:12:29[22m [34m[assets][39m Copying fonts (22 files)...
+[2m09:12:30[22m [34m[vite][39m [32m✓ built in 3.30s[39m
+[33m[1m09:12:31[22m [WARN] [vite][39m [33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[2m09:12:31[22m [34m[vite][39m [32m✓ built in 822ms[39m
+[2m09:12:31[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m09:12:32[22m   [34m├─[39m [2m/404.html[22m [2m(+123ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/about/index.html[22m [2m(+39ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/anime/index.html[22m [2m(+19ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/api/allPostMeta.json[22m [2m(+6ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/api/dynamic.json[22m [2m(+141ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/archive/index.html[22m [2m(+38ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/bangumi/index.html[22m [2m(+11ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/categories/index.html[22m [2m(+74ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/dynamic/comments/index.html[22m [2m(+9ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/dynamic/index.html[22m [2m(+50ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/friends/index.html[22m [2m(+34ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/gallery/firefly-2026/index.html[22m [2m(+3ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/gallery/encrypted-test/index.html[22m [2m(+3ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/gallery/index.html[22m [2m(+6ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/guestbook/index.html[22m [2m(+29ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/firefly-mobile-obsidian-dynamic/index.html[22m [2m(+37ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/dynamic-to-total-word-count/index.html[22m [2m(+28ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/pcb-expert/index.html[22m [2m(+35ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/pick-up-phone/index.html[22m [2m(+32ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/dieth-of-xiaohei/index.html[22m [2m(+26ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/countryside-sfexpress/index.html[22m [2m(+25ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/sophomore-course-registration/index.html[22m [2m(+31ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/jiangxie-stm32/index.html[22m [2m(+23ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/website-suddenly-down/index.html[22m [2m(+19ms)[22m 
+[2m09:12:32[22m   [34m├─[39m [2m/posts/follow-parents-work/index.html[22m [2m(+20ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/nutstore-sync/index.html[22m [2m(+18ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/public-traffic/index.html[22m [2m(+29ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/fastgithub/index.html[22m [2m(+19ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/Recordly/index.html[22m [2m(+28ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/go-home/index.html[22m [2m(+28ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/high-school-entrance-exam/index.html[22m [2m(+29ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/change-dorms/index.html[22m [2m(+33ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/resubmit-the-print-copy/index.html[22m [2m(+28ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/coil-hair-tie/index.html[22m [2m(+29ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/first-try-imgbed/index.html[22m [2m(+26ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/organic-chemistry/index.html[22m [2m(+27ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/before-ai/index.html[22m [2m(+32ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/fortunately/index.html[22m [2m(+26ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/giscus-to-waline/index.html[22m [2m(+27ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/update-phone/index.html[22m [2m(+29ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/isaac/index.html[22m [2m(+25ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/posts/circuitously/index.html[22m [2m(+31ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/robots.txt[22m [2m(+4ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/rss/index.html[22m [2m(+25ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/rss.xml[22m [2m(+224ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/search/index.html[22m [2m(+33ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/sponsor/index.html[22m [2m(+6ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/tags/index.html[22m [2m(+36ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/index.html[22m [2m(+28ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/2/index.html[22m [2m(+24ms)[22m 
+[2m09:12:33[22m   [34m├─[39m [2m/3/index.html[22m [2m(+29ms)[22m 
+[2m09:12:33[22m [32m✓ Completed in 2.56s.
+[39m
+[42m[30m generating optimized images [39m[49m
+[2m09:12:33[22m   [32m▶[39m /_astro/head_ima.rsW3s28l_1KtIxl.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(1/3)[22m
+[2m09:12:33[22m   [32m▶[39m /_astro/head_ima.rsW3s28l_KbvW6.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(2/3)[22m
+[2m09:12:33[22m   [32m▶[39m /_astro/head_ima.rsW3s28l_Xh5VW.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(3/3)[22m
+[2m09:12:33[22m [32m✓ Completed in 9ms.
+[39m
+[2m09:12:33[22m [34m[build][39m [32m✓ Completed in 7.64s.[39m
+[2m09:12:33[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m09:12:33[22m [34m[build][39m 47 page(s) built in [1m9.27s[22m
+[2m09:12:33[22m [34m[build][39m [1mComplete![22m
+npm warn Unknown project config "manage-package-manager-versions". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+🔤 Font subsetting started...
+   ⏭ Skipping '--font-greatvibes' — not referenced in selected or any font region.
+   No local fonts with subset: true found. Skipping.
+
+Running Pagefind v1.5.2 (Extended)
+Running from: "D:\\xixmu"
+Source:       "dist"
+Output:       "dist\\pagefind"
+
+[Walking source directory]
+Found 47 files matching **/*.{html}
+
+[Parsing files]
+Found a data-pagefind-body element on the site.
+↳ Ignoring pages without this tag.
+7 pages found without an <html> element. 
+Pages without an outer <html> element will not be processed by default. 
+If adding this element is not possible, use the root selector config to target a different root element.
+  * "/anime/" has no <html> element
+  * "/bangumi/" has no <html> element
+  * "/dynamic/comments/" has no <html> element
+  * "/gallery/encrypted-test/" has no <html> element
+  * "/gallery/firefly-2026/" has no <html> element
+  * "/gallery/" has no <html> element
+  * "/sponsor/" has no <html> element
+
+[Reading languages]
+Discovered 1 language: zh-cn
+
+[Building search indexes]
+Total: 
+  Indexed 1 language
+  Indexed 30 pages
+  Indexed 2468 words
+  Indexed 0 filters
+  Indexed 0 sorts
+Note: Pagefind doesn't support stemming for the language zh-cn. 
+Search will still work, but will not match across root words.
+Note: Pagefind doesn't support stemming for the language zh-cn. 
+Search will still work, but will not match across root words.
+
+Finished in 0.324 seconds

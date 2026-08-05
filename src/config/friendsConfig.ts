@@ -21,6 +21,10 @@ export const friendsPageConfig: FriendsPageConfig = {
 };
 
 // 友链配置
+// 站点名称：Xixmu
+// 站点描述：在记忆干枯前描绘。
+// 站点链接：https://xixmu.top
+// 头像链接：https://xixmu.top/_astro/head_ima.rsW3s28l_1KtIxl.avif
 export const friendsConfig: FriendLink[] = [
 	{
 		title: "夏夜流萤",
@@ -71,7 +75,17 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
-	}
+	},
+	{
+		title: "萧小晓",
+		imgurl:
+			"https://blog.lxlovo.top/assets/friends/png.png",
+		desc: "一个爱写文的菜鸡。",
+		siteurl: "https://blog.lxlovo.top",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
 ];
 
 // 获取启用的友链并进行排序

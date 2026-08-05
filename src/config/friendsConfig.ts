@@ -86,6 +86,16 @@ export const friendsConfig: FriendLink[] = [
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
+	{
+		title: "倾听风雨",
+		imgurl:
+			"https://q1.qlogo.cn/g?b=qq&nk=3931968261&s=640",
+		desc: "huh！",
+		siteurl: "https://blog.qtfyu.top",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
 ];
 
 // 获取启用的友链并进行排序

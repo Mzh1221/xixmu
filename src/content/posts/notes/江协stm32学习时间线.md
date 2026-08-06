@@ -4,7 +4,7 @@ tags:
   - 记录
 title: 江协STM32学习时间线
 published: 2026-07-15
-updated: 2026-08-03
+updated: 2026-08-06
 category: 追踪
 author: 惜夕暮
 timeline: true
@@ -53,3 +53,5 @@ timelineTotal: 50
 8-2 [[9-6 Flymcu串口下载&STLINK-Utility]] [[10-1 I2C通信协议]]
 
 8-3 [[10-2 MPU6050简介]]
+
+8-6 [[10-3 软件I2C读写MPU6050]] [[10-4 I2C通信外设]]

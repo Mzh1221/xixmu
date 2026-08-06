@@ -44,6 +44,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 留言
 			LinkPresets.Guestbook,
+
+			// 书签导航
+			LinkPresets.Booknav,
 		],
 	});
 
@@ -64,9 +67,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 番组计划
 			LinkPresets.Bangumi,
-
-			// 书签导航
-			LinkPresets.Booknav,
 		],
 	});
 

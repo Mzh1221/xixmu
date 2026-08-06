@@ -96,6 +96,16 @@ export const friendsConfig: FriendLink[] = [
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
+	{
+		title: "StackMeow",
+		imgurl:
+			"https://www.image2url.com/r2/default/images/1785780139063-ee590a50-83e0-499d-b3ad-bb1a6d536ff1.jpeg",
+		desc: "人生是层层堆叠的经历，而内心永远保有一只自在小猫。",
+		siteurl: "https://www.stackmeow.tech",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
 ];
 
 // 获取启用的友链并进行排序

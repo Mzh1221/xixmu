@@ -4,7 +4,7 @@ tags:
   - 记录
 title: 江协STM32学习时间线
 published: 2026-07-15
-updated: 2026-08-10
+updated: 2026-08-11
 category: 追踪
 author: 惜夕暮
 timeline: true
@@ -63,3 +63,5 @@ timelineTotal: 50
 8-9 [[11-2 W25Q64简介]]
 
 8-10 [[11-3 软件SPI读写W25Q64]]
+
+8-11 [[11-4 SPI通信外设]] [[11-5 硬件SPI读写W25Q64]]

@@ -1,6 +1,7 @@
 ---
 slug: pcb-expert
-tags: []
+tags:
+  - PCB
 category: 追踪
 title: PCB设计-Expert电子实验室学习时间线
 published: 2026-08-03

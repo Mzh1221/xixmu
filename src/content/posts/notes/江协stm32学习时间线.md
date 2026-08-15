@@ -1,7 +1,7 @@
 ---
 slug: jiangxie-stm32
 tags:
-  - 记录
+  - STM32
 title: 江协STM32学习时间线
 published: 2026-07-15
 updated: 2026-08-13

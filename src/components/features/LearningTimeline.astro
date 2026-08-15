@@ -31,6 +31,22 @@ const totalCourses = items.reduce(
 );
 const pct = target > 0 ? Math.min(100, Math.round((totalCourses / target) * 100)) : 0;
 
+// 跨度：学习开始第一天 ~ 最后一天（正文按时间顺序），含首尾天数
+const firstDate = items[0]?.date ?? "";
+const lastDate = items[items.length - 1]?.date ?? "";
+const dayOfYear = (d: string): number => {
+	const [m, dd] = d.split("-").map(Number);
+	const cum = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+	return (cum[(m - 1) ?? 0] ?? 0) + (dd ?? 0);
+};
+let spanDays = 0;
+if (firstDate && lastDate && items.length > 1) {
+	let f = dayOfYear(firstDate);
+	let l = dayOfYear(lastDate);
+	if (l < f) l += 365; // 跨年（如 12-31 → 01-05）
+	spanDays = l - f + 1;
+}
+
 // [[xxx]] → /posts/xxx/ 链接（与 Firefly remark-wiki-link 一致）
 function renderContent(text: string): string {
 	return text.replace(
@@ -56,6 +72,12 @@ function renderContent(text: string): string {
 					完成 <strong>{totalCourses}</strong>
 					{target > 0 && <>/{target}</>} 课
 				</span>
+				{firstDate && lastDate && (
+					<span class="tl-stat">
+						跨度 <strong>{firstDate} ~ {lastDate}</strong>
+						{spanDays > 0 && <>（{spanDays} 天）</>}
+					</span>
+				)}
 				{target > 0 && (
 					<div class="tl-progress">
 						<div class="tl-progress-bar">

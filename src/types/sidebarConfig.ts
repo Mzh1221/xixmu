@@ -12,7 +12,6 @@ export type WidgetComponentType =
 	| "siteInfo"
 	| "dynamic"
 	| "timeGreeting"
-	| "umamiStats"
 	| "busuanziStats";
 
 export type WidgetComponentConfig = {

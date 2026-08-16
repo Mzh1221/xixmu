@@ -127,8 +127,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			showOnPostPage: true,
 		},
 		{
-			// 组件类型：Umami 访问统计卡片
-			type: "umamiStats",
+			// 组件类型：不蒜子访问统计卡片（国内 CDN，稳定）
+			type: "busuanziStats",
 			enable: true,
 			position: "top",
 			showOnPostPage: false,

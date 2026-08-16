@@ -4,7 +4,7 @@ tags:
   - STM32
 title: 江协STM32学习时间线
 published: 2026-07-15
-updated: 2026-08-13
+updated: 2026-08-16
 category: 追踪
 author: 惜夕暮
 timeline: true
@@ -69,3 +69,5 @@ timelineTotal: 50
 8-12 [[12-1 Unix时间戳]]
 
 8-13 [[12-2 BKP备份寄存器&RTC实时时钟]]
+
+8-16 [[13-3 读写备份寄存器&实时时钟]]

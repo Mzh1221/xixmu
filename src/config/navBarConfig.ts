@@ -59,9 +59,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 动态
 			LinkPresets.Dynamic,
 
-			// 学习时间线
-			LinkPresets.LearningTimeline,
-
 			// 相册
 			LinkPresets.Gallery,
 
@@ -72,6 +69,8 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			LinkPresets.Bangumi,
 		],
 	});
+
+	links.push(LinkPresets.LearningTimeline);
 
 	// 关于及其子菜单
 	links.push({

@@ -395,17 +395,21 @@ const description = `已收录 ${timelinePosts.length} 条学习记录系列，�
 
 <script is:inline>
 	// 系列筛选：点击卡片只看该系列，再点取消（事件委托，SPA 导航后仍有效）
+	// 注意：is:inline 脚本不经过编译，必须用纯 JS，不能写 TS 语法（如 as 断言）
 	(() => {
-		document.addEventListener("click", (e) => {
-			const btn = (e.target as HTMLElement).closest("[data-filter]");
+		document.addEventListener("click", function (e) {
+			var t = e.target;
+			var btn = t && t.closest ? t.closest("[data-filter]") : null;
 			if (!btn) return;
-			const isActive = btn.classList.contains("active");
-			document.querySelectorAll("[data-filter]").forEach((b) => b.classList.remove("active"));
+			var isActive = btn.classList.contains("active");
+			document.querySelectorAll("[data-filter]").forEach(function (b) {
+				b.classList.remove("active");
+			});
 			if (!isActive) btn.classList.add("active");
-			document.querySelectorAll("[data-series]").forEach((row) => {
-				const el = row as HTMLElement;
-				const active = document.querySelector("[data-filter].active");
-				el.style.display = active && el.dataset.series !== (active as HTMLElement).dataset.filter ? "none" : "";
+			var active = document.querySelector("[data-filter].active");
+			document.querySelectorAll("[data-series]").forEach(function (row) {
+				row.style.display =
+					active && row.dataset.series !== active.dataset.filter ? "none" : "";
 			});
 		});
 	})();

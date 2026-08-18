@@ -88,7 +88,7 @@ function renderContent(text: string): string {
 				)}
 			</div>
 			<div class="tl-list">
-			{items.map((item) => (
+			{[...items].reverse().map((item) => (
 				<div class="tl-row">
 					<div class="tl-rail" aria-hidden="true">
 						<span class="tl-node" />

@@ -40,15 +40,11 @@ const totalCourses = items.reduce(
 	(sum, i) => sum + (i.courses.match(/\[\[[^\]]+\]\]/g)?.length ?? 0),
 	0,
 );
-const firstDate = items[0]?.date ?? "";
-const lastDate = items[items.length - 1]?.date ?? "";
-let spanDays = 0;
-if (firstDate && lastDate && items.length > 1) {
-	let f = dayOfYear(firstDate);
-	let l = dayOfYear(lastDate);
-	if (l < f) l += 365; // 跨年
-	spanDays = l - f + 1;
-}
+const totalTarget = timelinePosts.reduce(
+	(sum, p) => sum + (Number(p.data.timelineTotal) || 0),
+	0,
+);
+
 
 // ============ [[xxx]] → 链接（与 LearningTimeline 一致）============
 function renderContent(text: string): string {
@@ -94,17 +90,13 @@ const description = `已收录 ${timelinePosts.length} 条学习记录系列，�
 								已学习 <strong>{totalDays}</strong> 天
 							</span>
 							<span class="tl-stat">
-								完成 <strong>{totalCourses}</strong> 课
+								完成 <strong>{totalCourses}</strong>
+								{totalTarget > 0 && <>/{totalTarget}</>} 课
 							</span>
-							{firstDate && lastDate && (
-								<span class="tl-stat">
-									跨度 <strong>{firstDate} ~ {lastDate}</strong>
-									{spanDays > 0 && <>（{spanDays} 天）</>}
-								</span>
-							)}
+
 						</div>
 						<div class="tl-list">
-							{items.map((item) => (
+							{[...items].reverse().map((item) => (
 								<div class="tl-row">
 									<div class="tl-rail" aria-hidden="true">
 										<span class="tl-node" />

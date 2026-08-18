@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getPostUrlBySlug } from "@/utils/url-utils";
 import { Icon } from "astro-icon/components";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 
@@ -9,7 +10,8 @@ const timelinePosts = await getCollection("posts", ({ data }) => data.timeline =
 interface TimelineItem {
 	date: string;
 	courses: string;
-	slug: string;
+	id: string;
+	url: string;
 	title: string;
 }
 
@@ -22,7 +24,7 @@ for (const post of timelinePosts) {
 		.filter((l) => /^\d{1,2}-\d{1,2}(\s|$)/.test(l));
 	for (const line of lines) {
 		const m = line.match(/^(\d{1,2}-\d{1,2})\s*(.*)$/);
-		if (m) items.push({ date: m[1], courses: m[2], slug: post.data.slug, title: post.data.title });
+		if (m) items.push({ date: m[1], courses: m[2], id: post.id, url: getPostUrlBySlug(post.id), title: post.data.title });
 	}
 }
 
@@ -44,6 +46,36 @@ const totalTarget = timelinePosts.reduce(
 	(sum, p) => sum + (Number(p.data.timelineTotal) || 0),
 	0,
 );
+
+// 统计单行内 [[课程]] 数量
+const countCourses = (s: string) => (s.match(/\[\[[^\]]+\]\]/g)?.length ?? 0);
+
+// 各系列总览（用于顶部卡片 + 筛选）
+const seriesList = timelinePosts.map((post) => {
+	const its = items.filter((i) => i.id === post.id);
+	const days = new Set(its.map((i) => i.date)).size;
+	const courses = its.reduce((sum, i) => sum + countCourses(i.courses), 0);
+	const target = Number(post.data.timelineTotal) || 0;
+	return {
+		id: post.id,
+		title: post.data.title,
+		days,
+		courses,
+		target,
+		pct: target > 0 ? Math.min(100, Math.round((courses / target) * 100)) : 0,
+	};
+});
+
+// 本周（周一起）完成的课程数
+const now = new Date();
+const startOfYear = new Date(now.getFullYear(), 0, 1);
+const todayDoy = Math.floor((now.getTime() - startOfYear.getTime()) / 86400000) + 1;
+const mondayDoy = todayDoy - ((now.getDay() + 6) % 7);
+const weekCourses = items.reduce((sum, i) => {
+	const d = dayOfYear(i.date);
+	if (d < mondayDoy || d > mondayDoy + 6) return sum;
+	return sum + countCourses(i.courses);
+}, 0);
 
 
 // ============ [[xxx]] → 链接（与 LearningTimeline 一致）============
@@ -93,18 +125,43 @@ const description = `已收录 ${timelinePosts.length} 条学习记录系列，�
 								完成 <strong>{totalCourses}</strong>
 								{totalTarget > 0 && <>/{totalTarget}</>} 课
 							</span>
+							<span class="tl-stat">
+								本周 <strong>{weekCourses}</strong> 课
+							</span>
 
 						</div>
+						<div class="tl-series">
+							{seriesList.map((s) => (
+								<button
+									type="button"
+									class="tl-series-card"
+									data-filter={s.id}
+									title="点击筛选该系列，再点取消"
+								>
+									<div class="tl-series-name">{s.title}</div>
+									<div class="tl-series-bar">
+										<div class="tl-series-fill" style={`width: ${s.pct}%`} />
+									</div>
+									<div class="tl-series-meta">
+										{s.courses}/{s.target} 课 · {s.days} 天 · {s.pct}%
+									</div>
+								</button>
+							))}
+						</div>
 						<div class="tl-list">
-							{[...items].reverse().map((item) => (
-								<div class="tl-row">
+							{[...items].reverse().map((item, idx) => (
+								<div
+									class:list={["tl-row", idx < 3 && "tl-row-recent"]}
+									data-series={item.id}
+								>
 									<div class="tl-rail" aria-hidden="true">
 										<span class="tl-node" />
 									</div>
 									<div class="tl-body">
 										<div class="tl-date">
 											{item.date}
-											<a class="tl-source" href={`/posts/${item.slug}/`}>
+											{idx < 3 && <span class="tl-recent-badge">最近</span>}
+											<a class="tl-source" href={item.url}>
 												{item.title}
 											</a>
 										</div>
@@ -238,6 +295,84 @@ const description = `已收录 ${timelinePosts.length} 条学习记录系列，�
 		text-align: center;
 	}
 
+	/* 系列总览卡片（可点击筛选） */
+	.tl-series {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+		gap: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.tl-series-card {
+		text-align: left;
+		padding: 0.75rem;
+		border-radius: calc(var(--radius-large) - 0.375rem);
+		border: 1px solid color-mix(in srgb, var(--line-divider) 60%, transparent);
+		background: color-mix(in srgb, var(--primary) 4%, transparent);
+		cursor: pointer;
+		transition:
+			border-color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.tl-series-card:hover {
+		border-color: color-mix(in srgb, var(--primary) 60%, transparent);
+	}
+
+	.tl-series-card.active {
+		border-color: var(--primary);
+		background: color-mix(in srgb, var(--primary) 12%, transparent);
+	}
+
+	.tl-series-name {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--content-text);
+		margin-bottom: 0.375rem;
+	}
+
+	.tl-series-bar {
+		height: 0.375rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--content-meta) 18%, transparent);
+		overflow: hidden;
+		margin-bottom: 0.375rem;
+	}
+
+	.tl-series-fill {
+		height: 100%;
+		border-radius: 999px;
+		background: var(--primary);
+		transition: width 0.4s ease;
+	}
+
+	.tl-series-meta {
+		font-size: 0.75rem;
+		color: var(--content-meta);
+	}
+
+	/* 最近 3 条高亮 */
+	.tl-row-recent .tl-node {
+		background: var(--primary);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 30%, transparent);
+	}
+
+	.tl-row-recent .tl-date {
+		color: var(--primary);
+		font-weight: 600;
+	}
+
+	.tl-recent-badge {
+		margin-left: 0.5rem;
+		padding: 0 0.375rem;
+		border-radius: 999px;
+		font-size: 0.65rem;
+		font-weight: 600;
+		color: #fff;
+		background: var(--primary);
+		vertical-align: 0.05em;
+	}
+
 	@media (max-width: 640px) {
 		.learning-timeline {
 			padding: 1rem 1rem 0.75rem;
@@ -251,5 +386,27 @@ const description = `已收录 ${timelinePosts.length} 条学习记录系列，�
 			grid-template-columns: 1.5rem 1fr;
 			gap: 0.625rem;
 		}
+
+		.tl-series {
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 </style>
+
+<script is:inline>
+	// 系列筛选：点击卡片只看该系列，再点取消（事件委托，SPA 导航后仍有效）
+	(() => {
+		document.addEventListener("click", (e) => {
+			const btn = (e.target as HTMLElement).closest("[data-filter]");
+			if (!btn) return;
+			const isActive = btn.classList.contains("active");
+			document.querySelectorAll("[data-filter]").forEach((b) => b.classList.remove("active"));
+			if (!isActive) btn.classList.add("active");
+			document.querySelectorAll("[data-series]").forEach((row) => {
+				const el = row as HTMLElement;
+				const active = document.querySelector("[data-filter].active");
+				el.style.display = active && el.dataset.series !== (active as HTMLElement).dataset.filter ? "none" : "";
+			});
+		});
+	})();
+</script>

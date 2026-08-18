@@ -59,6 +59,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 动态
 			LinkPresets.Dynamic,
 
+			// 学习时间线
+			LinkPresets.LearningTimeline,
+
 			// 相册
 			LinkPresets.Gallery,
 
@@ -143,6 +146,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/dynamic/",
 		icon: "material-symbols:forum-rounded",
 		pageKey: "dynamic",
+	},
+	LearningTimeline: {
+		name: "学习时间线",
+		url: "/learning-timeline/",
+		icon: "material-symbols:timeline",
+		pageKey: "learning-timeline",
 	},
 	Archive: {
 		name: "归档",

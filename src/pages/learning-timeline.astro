@@ -1,0 +1,263 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+
+// ============ 收集所有带 timeline: true 的文章 ============
+const timelinePosts = await getCollection("posts", ({ data }) => data.timeline === true);
+
+interface TimelineItem {
+	date: string;
+	courses: string;
+	slug: string;
+	title: string;
+}
+
+// ============ 解析每篇正文的「MM-DD 课程」行，合并 ============
+const items: TimelineItem[] = [];
+for (const post of timelinePosts) {
+	const lines = post.body
+		.split("\n")
+		.map((l) => l.trim())
+		.filter((l) => /^\d{1,2}-\d{1,2}(\s|$)/.test(l));
+	for (const line of lines) {
+		const m = line.match(/^(\d{1,2}-\d{1,2})\s*(.*)$/);
+		if (m) items.push({ date: m[1], courses: m[2], slug: post.data.slug, title: post.data.title });
+	}
+}
+
+// ============ 按日期排序（同年假设，MM-DD → 年内第几天）============
+const dayOfYear = (d: string): number => {
+	const [m, dd] = d.split("-").map(Number);
+	const cum = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+	return (cum[(m - 1) ?? 0] ?? 0) + (dd ?? 0);
+};
+items.sort((a, b) => dayOfYear(a.date) - dayOfYear(b.date));
+
+// ============ 统计 ============
+const totalDays = new Set(items.map((i) => i.date)).size;
+const totalCourses = items.reduce(
+	(sum, i) => sum + (i.courses.match(/\[\[[^\]]+\]\]/g)?.length ?? 0),
+	0,
+);
+const firstDate = items[0]?.date ?? "";
+const lastDate = items[items.length - 1]?.date ?? "";
+let spanDays = 0;
+if (firstDate && lastDate && items.length > 1) {
+	let f = dayOfYear(firstDate);
+	let l = dayOfYear(lastDate);
+	if (l < f) l += 365; // 跨年
+	spanDays = l - f + 1;
+}
+
+// ============ [[xxx]] → 链接（与 LearningTimeline 一致）============
+function renderContent(text: string): string {
+	return text.replace(
+		/\[\[([^\[\]\n]+?)(?:\|([^\[\]\n]*))?\]\]/g,
+		(_: string, target: string, alias?: string) => {
+			const slug = target.trim();
+			const label = (alias && alias.trim()) || slug;
+			const href = `/posts/${encodeURIComponent(slug)}/`;
+			return `<a href="${href}">${label}</a>`;
+		},
+	);
+}
+
+const title = "学习时间线";
+const description = `已收录 ${timelinePosts.length} 条学习记录系列，共 ${totalCourses} 课`;
+---
+
+<MainGridLayout title={title} description={description}>
+	<div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+		<div class="card-base z-10 px-9 py-6 relative w-full">
+			<!-- 页面标题 -->
+			<div class="mb-8">
+				<div class="flex items-center gap-3 mb-3">
+					<div class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+						<Icon is:inline name="material-symbols:timeline" class="text-[1.5rem]"></Icon>
+					</div>
+					<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+						{title}
+					</div>
+				</div>
+				<p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+					{description}
+				</p>
+			</div>
+
+			<!-- 聚合时间线 -->
+			{
+				items.length > 0 ? (
+					<div class="learning-timeline">
+						<div class="tl-stats">
+							<span class="tl-stat">
+								已学习 <strong>{totalDays}</strong> 天
+							</span>
+							<span class="tl-stat">
+								完成 <strong>{totalCourses}</strong> 课
+							</span>
+							{firstDate && lastDate && (
+								<span class="tl-stat">
+									跨度 <strong>{firstDate} ~ {lastDate}</strong>
+									{spanDays > 0 && <>（{spanDays} 天）</>}
+								</span>
+							)}
+						</div>
+						<div class="tl-list">
+							{items.map((item) => (
+								<div class="tl-row">
+									<div class="tl-rail" aria-hidden="true">
+										<span class="tl-node" />
+									</div>
+									<div class="tl-body">
+										<div class="tl-date">
+											{item.date}
+											<a class="tl-source" href={`/posts/${item.slug}/`}>
+												{item.title}
+											</a>
+										</div>
+										<div class="tl-content" set:html={renderContent(item.courses)} />
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				) : (
+					<p class="tl-empty">暂无学习记录</p>
+				)
+			}
+		</div>
+	</div>
+</MainGridLayout>
+
+<style>
+	.learning-timeline {
+		position: relative;
+		padding: 1.25rem 1.5rem 1rem;
+		background: var(--card-bg);
+		border: 1px solid color-mix(in srgb, var(--line-divider) 50%, transparent);
+		border-radius: var(--radius-large);
+	}
+
+	.tl-list {
+		position: relative;
+	}
+
+	.tl-list::before {
+		content: "";
+		position: absolute;
+		top: 0.5rem;
+		bottom: 0.25rem;
+		left: calc(1rem - 1px);
+		width: 2px;
+		border-left: 2px dashed color-mix(in srgb, var(--line-color) 85%, transparent);
+	}
+
+	.tl-stats {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.625rem 1.25rem;
+		margin-bottom: 0.875rem;
+		padding: 0.625rem 0.875rem;
+		border-radius: calc(var(--radius-large) - 0.375rem);
+		background: color-mix(in srgb, var(--primary) 8%, transparent);
+		color: var(--content-meta);
+		font-size: 0.85rem;
+	}
+
+	.tl-stat strong {
+		color: var(--primary);
+		font-weight: 700;
+	}
+
+	.tl-row {
+		display: grid;
+		grid-template-columns: 2rem 1fr;
+		gap: 0.875rem;
+		padding: 0.5rem 0 0.75rem;
+	}
+
+	.tl-rail {
+		position: relative;
+	}
+
+	.tl-node {
+		position: absolute;
+		top: 0.4rem;
+		left: 50%;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		background: oklch(0.5 0.05 var(--hue));
+		border: 2.5px solid var(--card-bg);
+		box-shadow: 0 0 0 1px color-mix(in srgb, var(--line-color) 55%, transparent);
+		transform: translateX(-50%);
+	}
+
+	.tl-body {
+		min-width: 0;
+	}
+
+	.tl-date {
+		margin-bottom: 0.125rem;
+		color: var(--content-meta);
+		font-size: 0.75rem;
+		line-height: 1.4;
+	}
+
+	.tl-source {
+		margin-left: 0.625rem;
+		padding: 0.0625rem 0.5rem;
+		border-radius: 999px;
+		font-size: 0.7rem;
+		background: color-mix(in srgb, var(--primary) 12%, transparent);
+		color: var(--primary);
+		text-decoration: none;
+	}
+
+	.tl-source:hover {
+		text-decoration: underline;
+	}
+
+	.tl-content {
+		color: rgb(0 0 0 / 90%);
+		font-size: 0.95rem;
+		line-height: 1.75;
+		overflow-wrap: anywhere;
+	}
+
+	.tl-content :global(a) {
+		margin-right: 0.875rem;
+		color: var(--primary);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.tl-content :global(a:hover) {
+		text-decoration: underline;
+	}
+
+	.tl-empty {
+		color: var(--content-meta);
+		font-size: 0.9rem;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	@media (max-width: 640px) {
+		.learning-timeline {
+			padding: 1rem 1rem 0.75rem;
+		}
+
+		.tl-list::before {
+			left: calc(0.75rem - 1px);
+		}
+
+		.tl-row {
+			grid-template-columns: 1.5rem 1fr;
+			gap: 0.625rem;
+		}
+	}
+</style>

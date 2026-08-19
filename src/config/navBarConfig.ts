@@ -156,7 +156,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		pageKey: "learning-timeline",
 	},
 	Timeline: {
-		name: "时间线",
+		name: "经历时间线",
 		url: "/timeline/",
 		icon: "material-symbols:route",
 		pageKey: "timeline",

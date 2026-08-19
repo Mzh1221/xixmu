@@ -62,7 +62,7 @@ export const timelineData: TimelineItem[] = [
 			"完成 50 课课程体系中的 40+ 课",
 			"动手实现 LED 流水灯、呼吸灯、OLED 等实验",
 		],
-		icon: "material-symbols:emoji-events",
+		icon: "material-symbols:trophy",
 		color: "#2563EB",
 	},
 	{

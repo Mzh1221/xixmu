@@ -28,6 +28,7 @@ export const timelineData: TimelineItem[] = [
 	{
 		id: "xixmu-blog",
 		title: "Xixmu 个人博客",
+		organization: "惜夕暮",
 		description:
 			"基于 Astro 与 Firefly 主题搭建的个人博客，记录学习笔记、课程追踪与生活动态。",
 		type: "project",
@@ -80,7 +81,7 @@ export const timelineData: TimelineItem[] = [
 			"学习元件符号绘制与 PCB 设计",
 		],
 		icon: "material-symbols:verified",
-		color: "#EA580C",
+		color: "#0cea31",
 	},
 	{
 		id: "senier-high-school",
@@ -98,10 +99,12 @@ export const timelineData: TimelineItem[] = [
 			"高考考拉了但确实水平如此",
 			"志愿自己填拉了，终于在一年后回到自己分数本来就能报的专业"
 		],
-		icon: "material-symbols:verified",
+		icon: "material-symbols:school",
 		color: "#EA580C",
 	},
-	// {//?为可选，无则必填
+	// {
+	//  //?为可选，无则必填
+	// 	//时间线图标当前的都为绿，非当前与color相同
 	// 	id: string;//唯一标识
 	// 	title: string;//大标题
 	// 	description: string;//正文描述

@@ -56,7 +56,7 @@ export const timelineData: TimelineItem[] = [
 			"跟随江协科技课程学习 STM32，覆盖 GPIO、定时器、中断、PWM、串口等外设。",
 		type: "achievement",
 		startDate: "2026-07-12",
-		endDate: "2026-8-13",
+		endDate: "2026-08-13",
 		organization: "江协科技",
 		skills: ["C", "STM32", "Keil", "GPIO", "TIM", "USART"],
 		achievements: [
@@ -78,6 +78,25 @@ export const timelineData: TimelineItem[] = [
 		achievements: [
 			"掌握电路定理与原理图阅读",
 			"学习元件符号绘制与 PCB 设计",
+		],
+		icon: "material-symbols:verified",
+		color: "#EA580C",
+	},
+	{
+		id: "senier-high-school",
+		title: "高中毕业",
+		description:
+			"学习电路原理与 PCB 设计流程，使用立创 EDA 绘制元件符号与封装。",
+		type: "education",
+		startDate: "2022-06-25",
+		endDate: "2025-06-10",
+		organization: "嘉兴一中",
+		skills: ["物化地"],
+		achievements: [
+			"在正常的领导层下度过值得回忆的高中时光",
+			"舍友依然有联系",
+			"高考考拉了但确实水平如此",
+			"志愿自己填拉了，终于在一年后回到自己分数本来就能报的专业"
 		],
 		icon: "material-symbols:verified",
 		color: "#EA580C",

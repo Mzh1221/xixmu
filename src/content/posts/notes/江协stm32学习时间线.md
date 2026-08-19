@@ -9,7 +9,7 @@ category: 追踪
 author: 惜夕暮
 timeline: true
 timelineTotal: 50
-description: https://www.bilibili.com/video/BV1th411z7sn/?spm_id_from=333.1387.favlist.content.click&vd_source=856d0caf334b1f469ed1d70817b03c2c
+description: BV1th411z7sn
 ---
 7-12 [[1-1-课程介绍]] [[1-2 STM 简介]]
 

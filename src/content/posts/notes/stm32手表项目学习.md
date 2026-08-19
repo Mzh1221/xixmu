@@ -10,8 +10,8 @@ pinned: false
 author: 惜夕暮
 timeline: true
 timelineTotal: 20
-description: https://www.bilibili.com/video/BV1CoGuzEEeN?spm_id_from=333.788.videopod.episodes&vd_source=856d0caf334b1f469ed1d70817b03c2c
+description: BV1CoGuzEEeN
 ---
 8-16 [[项目介绍]]
 
-8-19 [[首页时钟]]
+8-19 [[home-clock|首页时钟]]

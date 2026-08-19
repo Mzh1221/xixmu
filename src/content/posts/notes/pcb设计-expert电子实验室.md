@@ -10,7 +10,7 @@ pinned: false
 author: 惜夕暮
 timeline: true
 timelineTotal: 29
-description: https://www.bilibili.com/video/BV1At421h7Ui/?spm_id_from=333.1387.favlist.content.click
+description: BV1At421h7Ui
 ---
 7-31 [[开场白]] [[1-课程介绍]]
 

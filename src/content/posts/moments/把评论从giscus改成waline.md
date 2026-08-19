@@ -6,7 +6,7 @@ tags:
 title: 把评论从giscus改成waline
 published: 2026-07-05
 updated: 2026-07-05
-category: 动态
+category: 日常
 author: 惜夕暮
 ---
 又去 [Olinl Blog - 分享、实践、学习](https://blog.olinl.com/)的网站逛了逛，发现他的网站能显示浏览量。

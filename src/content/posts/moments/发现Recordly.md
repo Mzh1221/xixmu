@@ -6,7 +6,7 @@ tags:
 title: 发现Recordly
 published: 2026-07-10
 updated: 2026-07-10
-category: 动态
+category: 日常
 author: 惜夕暮
 ---
 刷公众号发现一个制作教程的录屏工具，之前看别人做的教程有这么舒服的缩放动画很是羡慕。这次随手刷公众号找到了有人推荐 [Recordly推荐公众号原文](https://mp.weixin.qq.com/s/PdIiMPOzq71Yq2p4lLEc_Q)。

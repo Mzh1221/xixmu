@@ -5,7 +5,7 @@ tags:
 title: AI前最后一代人
 published: 2026-07-05
 updated: 2026-07-05
-category: 动态
+category: 日常
 author: 惜夕暮
 draft: true
 ---

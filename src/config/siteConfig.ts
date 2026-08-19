@@ -118,6 +118,8 @@ export const siteConfig: SiteConfig = {
 		anime: false,
 		// 动态页面开关
 		dynamic: true,
+		// 时间线页面开关
+		timeline: true,
 		// 书签导航页面开关
 		booknav: true,
 	},

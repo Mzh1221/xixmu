@@ -81,6 +81,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 打赏
 			LinkPresets.Sponsor,
 
+			// 时间线
+			LinkPresets.Timeline,
+
 			// 关于页面
 			LinkPresets.About,
 		],
@@ -151,6 +154,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/learning-timeline/",
 		icon: "material-symbols:timeline",
 		pageKey: "learning-timeline",
+	},
+	Timeline: {
+		name: "时间线",
+		url: "/timeline/",
+		icon: "material-symbols:route",
+		pageKey: "timeline",
 	},
 	Archive: {
 		name: "归档",

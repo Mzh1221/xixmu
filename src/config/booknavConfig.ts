@@ -112,22 +112,28 @@ export const booknavConfig: BooknavGroup[] = [
 		weight: 80,
 		items: [
 			{
+				title: "Smart Calculators",
+				url: "https://smart-calculators.net/zh-CN",
+				desc: "免费在线计算器，为每个人提供精准、快速、易用的计算工具",
+				weight: 10
+			},
+			{
 				title: "TinyPNG",
 				url: "https://tinypng.com",
 				desc: "在线压缩 PNG / JPEG 图片",
-				weight: 10,
+				weight: 9,
 			},
 			{
 				title: "Squoosh",
 				url: "https://squoosh.app",
 				desc: "Google 出品的图片压缩与格式转换",
-				weight: 9,
+				weight: 8,
 			},
 			{
 				title: "Carbon",
 				url: "https://carbon.now.sh",
 				desc: "把代码片段生成漂亮的图片",
-				weight: 8,
+				weight: 7,
 			},
 		],
 	},

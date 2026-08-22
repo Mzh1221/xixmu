@@ -184,7 +184,7 @@ function createItem(entry: DynamicData) {
 				hour: "2-digit",
 				minute: "2-digit",
 			});
-			time.textContent = `${full} ${formatRelativeTime(date)}`;
+			time.textContent = `${formatRelativeTime(date)} ${full}`;
 		} else {
 			const full = new Intl.DateTimeFormat(
 				document.documentElement.lang || undefined,
@@ -198,7 +198,7 @@ function createItem(entry: DynamicData) {
 					second: "2-digit",
 				},
 			).format(date);
-			time.textContent = `${full} ${formatTimezoneOffset(timezone, date)} ${formatRelativeTime(date)}`;
+			time.textContent = `${formatRelativeTime(date)} ${full} ${formatTimezoneOffset(timezone, date)}`;
 		}
 	}
 	const location = root.querySelector<HTMLElement>("[data-dynamic-location]");

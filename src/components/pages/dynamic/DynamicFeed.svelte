@@ -2,6 +2,24 @@
 import { onMount, tick } from "svelte";
 import ClientPagination from "@/components/common/ClientPagination.svelte";
 import { formatTimezoneOffset } from "@/utils/date-utils";
+
+function formatRelativeTime(dateInput: Date | string): string {
+	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
+	const now = new Date();
+	const diffMs = now.getTime() - date.getTime();
+	const diffSec = Math.floor(diffMs / 1000);
+	const diffMin = Math.floor(diffSec / 60);
+	const diffHour = Math.floor(diffMin / 60);
+	const diffDay = Math.floor(diffHour / 24);
+	const diffMonth = Math.floor(diffDay / 30);
+	const diffYear = Math.floor(diffDay / 365);
+	if (diffSec < 60) return "刚刚";
+	if (diffMin < 60) return `${diffMin} 分钟前`;
+	if (diffHour < 24) return `${diffHour} 小时前`;
+	if (diffDay < 30) return `${diffDay} 天前`;
+	if (diffMonth < 12) return `${diffMonth} 个月前`;
+	return `${diffYear} 年前`;
+}
 import { fetchMemos } from "@/utils/memos-adapter";
 import { registerDynamicGallery } from "./dynamic-gallery";
 import { registerDynamicInlineComments } from "./dynamic-inline-comments";
@@ -158,30 +176,7 @@ function createItem(entry: DynamicData) {
 	if (time) {
 		const date = new Date(entry.published);
 		time.dateTime = date.toISOString();
-		// 第三方 API 和 Memos 使用浏览器本地时区，不做额外时区转换
-		if (source.startsWith("http") || memos?.enable) {
-			time.textContent = date.toLocaleDateString("zh-CN", {
-				year: "numeric",
-				month: "2-digit",
-				day: "2-digit",
-				hour: "2-digit",
-				minute: "2-digit",
-			});
-		} else {
-			time.textContent = new Intl.DateTimeFormat(
-				document.documentElement.lang || undefined,
-				{
-					timeZone: "UTC",
-					year: "numeric",
-					month: "2-digit",
-					day: "2-digit",
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				},
-			).format(date);
-			time.textContent += ` ${formatTimezoneOffset(timezone, date)}`;
-		}
+		time.textContent = formatRelativeTime(date);
 	}
 	const location = root.querySelector<HTMLElement>("[data-dynamic-location]");
 	if (location) {

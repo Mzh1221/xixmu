@@ -24,7 +24,7 @@ export const friendsPageConfig: FriendsPageConfig = {
 // 站点名称：Xixmu
 // 站点描述：在记忆干枯前描绘。
 // 站点链接：https://xixmu.top
-// 头像链接：https://xixmu.top/_astro/head_ima.rsW3s28l_1KtIxl.avif
+// 头像链接：https://xixmu.top/_astro/head_ima.rsW3s28l_KbvW6.webp
 export const friendsConfig: FriendLink[] = [
 	{
 		title: "夏夜流萤",
@@ -49,7 +49,7 @@ export const friendsConfig: FriendLink[] = [
 	{
 		title: "Xixmu",
 		imgurl:
-			"https://xixmu.top/_astro/head_ima.rsW3s28l_1KtIxl.avif",
+			"https://xixmu.top/_astro/head_ima.rsW3s28l_KbvW6.webp",
 		desc: "在记忆干枯前描绘。",
 		siteurl: "https://xixmu.top",
 		tags: ["Blog"],

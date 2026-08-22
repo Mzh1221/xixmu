@@ -44,9 +44,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 留言
 			LinkPresets.Guestbook,
-
-			// 书签导航
-			LinkPresets.Booknav,
 		],
 	});
 
@@ -60,10 +57,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			LinkPresets.Dynamic,
 
 			// 相册
-			LinkPresets.Gallery,
-
-			// 书签导航
-			LinkPresets.Booknav,
+			// sLinkPresets.Gallery,
 
 			// 哔哩哔哩追番
 			LinkPresets.Bilibili,
@@ -88,8 +82,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		url: "#",
 		icon: "material-symbols:info",
 		children: [
+			// 书签导航
+			LinkPresets.Booknav,
+
 			// 打赏
-			LinkPresets.Sponsor,
+			// LinkPresets.Sponsor,
 
 			// 时间线
 			LinkPresets.Timeline,

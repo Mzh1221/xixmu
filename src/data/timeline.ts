@@ -87,7 +87,7 @@ export const timelineData: TimelineItem[] = [
 		id: "senier-high-school",
 		title: "高中毕业",
 		description:
-			"学习电路原理与 PCB 设计流程，使用立创 EDA 绘制元件符号与封装。",
+			"度过了还算不错的青春。",
 		type: "education",
 		startDate: "2022-06-25",
 		endDate: "2025-06-10",

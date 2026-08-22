@@ -1,0 +1,9 @@
+{
+	"redirects": [
+		{
+			"source": "/_astro/head_ima*",
+			"destination": "/assets/head_ima.avif",
+			"permanent": true
+		}
+	]
+}

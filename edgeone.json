@@ -1,8 +1,8 @@
 {
 	"redirects": [
 		{
-			"source": "/_astro/head_ima*",
-			"destination": "/assets/head_ima.avif",
+			"source": "/_astro/head_ima.rsW3s28l_1KtIxl.avif",
+			"destination": "/_astro/head_ima.rsW3s28l.jpg",
 			"permanent": true
 		}
 	]

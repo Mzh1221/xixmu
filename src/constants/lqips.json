@@ -1,9 +1,9 @@
 {
   "public:gallery/firefly-2026/cover.avif": "7588a28a8f989e8d88",
   "public:gallery/firefly-2026/1.avif": "c8bca9dde6d2babfb5",
-  "src:assets/images/head_ima.jpg": "82757184736b302e2f",
-  "src:assets/images/756426c5e22fe4a7bfd01e0c97f1b22f1878878194.jpg": "675f5c91847f4c4849",
-  "public:beian-icon.png": "af5a46ae614ac28e56",
   "src:assets/images/logo/firefly-light.png": "000000000000000000",
-  "src:assets/images/logo/firefly-dark.png": "ffffffffffffffffff"
+  "src:assets/images/logo/firefly-dark.png": "ffffffffffffffffff",
+  "public:beian-icon.png": "af5a46ae614ac28e56",
+  "src:assets/images/head_ima.jpg": "82757184736b302e2f",
+  "src:assets/images/756426c5e22fe4a7bfd01e0c97f1b22f1878878194.jpg": "675f5c91847f4c4849"
 }

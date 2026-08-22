@@ -176,7 +176,30 @@ function createItem(entry: DynamicData) {
 	if (time) {
 		const date = new Date(entry.published);
 		time.dateTime = date.toISOString();
-		time.textContent = formatRelativeTime(date);
+		if (source.startsWith("http") || memos?.enable) {
+			const full = date.toLocaleDateString("zh-CN", {
+				year: "numeric",
+				month: "2-digit",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+			});
+			time.textContent = `${full} ${formatRelativeTime(date)}`;
+		} else {
+			const full = new Intl.DateTimeFormat(
+				document.documentElement.lang || undefined,
+				{
+					timeZone: "UTC",
+					year: "numeric",
+					month: "2-digit",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				},
+			).format(date);
+			time.textContent = `${full} ${formatTimezoneOffset(timezone, date)} ${formatRelativeTime(date)}`;
+		}
 	}
 	const location = root.querySelector<HTMLElement>("[data-dynamic-location]");
 	if (location) {

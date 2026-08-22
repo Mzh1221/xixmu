@@ -243,14 +243,19 @@ dynamic-feed {
 .dynamic-time {
 	width: fit-content;
 	flex: 0 0 auto;
-	color: var(--content-meta);
-	font-size: 0.78rem;
+	color: var(--primary);
+	font-size: 0.8rem;
+	font-weight: 600;
 	line-height: 1.5;
 	text-decoration: none;
+	padding: 0.125rem 0.625rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--primary) 10%, transparent);
+	transition: background 0.2s ease;
 }
 
 .dynamic-time:hover {
-	color: var(--primary);
+	background: color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .dynamic-location {

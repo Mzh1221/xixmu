@@ -14,6 +14,7 @@ import { live2dWidgetConfig, sidebarLayoutConfig, siteConfig } from "@/config";
 import { getBannerVisibilityState } from "@/utils/banner-visibility-utils";
 import { getBackgroundImages, isHomePage } from "@/utils/layout-utils";
 import { getEffectiveSidebarState } from "@/utils/sidebar-effective-utils";
+import IconSprite from "@/components/features/IconSprite.astro";
 import Layout from "./Layout.astro";
 
 import "@/styles/expressive-code.css";
@@ -119,6 +120,9 @@ const {
                 {/* 分类导航栏 - 全站渲染并显示 */}
                 {shouldRenderCategoryBar && <div id="category-bar-wrapper"><CategoryBar currentPostCategory={postCategory} /></div>}
                 {/* 主内容区 - 始终渲染，确保 Swup 容器存在 */}
+                {/* 全局 SVG symbol 池 — 确保 Swup 切页时图标不丢失 */}
+                <IconSprite />
+
                 <main
                     id="swup-container"
                     class="transition-main"

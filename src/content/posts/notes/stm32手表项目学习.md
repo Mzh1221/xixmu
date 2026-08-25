@@ -5,7 +5,7 @@ tags:
 category: 追踪
 title: STM32手表项目学习
 published: 2026-08-18
-updated: 2026-08-23
+updated: 2026-08-25
 pinned: false
 author: 惜夕暮
 timeline: true
@@ -17,3 +17,5 @@ description: BV1CoGuzEEeN
 8-20 [[home-clock|首页时钟]]
 
 8-23 [[滑动菜单]]
+
+8-25 [[秒表]] [[手电筒]] 

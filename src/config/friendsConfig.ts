@@ -146,6 +146,15 @@ export const friendsConfig: FriendLink[] = [
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
+	{
+		title: "fqzlr",
+		imgurl: "https://q1.qlogo.cn/g?b=qq&nk=20447289&s=640",
+		desc: "躬身入局，心为主理，行有尺度，自持本心.",
+		siteurl: "https://blog.fqzlr.top/",
+		tags: ["Blog"],
+		weight: 10,
+		enabled: true,
+	},
 ];
 
 // 获取启用的友链并进行排序

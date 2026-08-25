@@ -9,7 +9,9 @@ import {
 const markdownImagePattern = /!\[([^\]]*)\]\((\S+?)(?:\s+["']([^"']*)["'])?\)/g;
 
 export async function GET(): Promise<Response> {
-	const processor = await createMarkdownProcessor();
+	const processor = await createMarkdownProcessor({
+		syntaxHighlight: "shiki",
+	});
 	const dynamics = sortDynamics(await getCollection("dynamic"));
 	const data = await Promise.all(
 		dynamics.map(async (entry) => {

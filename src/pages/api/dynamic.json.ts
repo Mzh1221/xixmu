@@ -11,6 +11,7 @@ const markdownImagePattern = /!\[([^\]]*)\]\((\S+?)(?:\s+["']([^"']*)["'])?\)/g;
 export async function GET(): Promise<Response> {
 	const processor = await createMarkdownProcessor({
 		syntaxHighlight: "shiki",
+		shikiConfig: { theme: "github-light" },
 	});
 	const dynamics = sortDynamics(await getCollection("dynamic"));
 	const data = await Promise.all(

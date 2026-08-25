@@ -391,8 +391,23 @@ dynamic-feed {
 /* Shiki 语法高亮 */
 .dynamic-content .astro-code,
 .dynamic-content .shiki {
-	background: transparent !important;
+	background: #ffffff !important;
 	overflow-x: auto;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* 灰色 token（注释、普通文本）加深 */
+.dynamic-content .astro-code span[style*="color:#6a737d"],
+.dynamic-content .shiki span[style*="color:#6a737d"],
+.dynamic-content .astro-code span[style*="color:#24292e"],
+.dynamic-content .shiki span[style*="color:#24292e"] {
+	color: #1a1a1a !important;
+}
+
+/* 整体文字颜色加深 */
+.dynamic-content .astro-code,
+.dynamic-content .shiki {
+	color: #1a1a1a !important;
 }
 
 .dynamic-content .astro-code code,

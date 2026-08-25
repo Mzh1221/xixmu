@@ -195,12 +195,6 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:chat",
 		pageKey: "guestbook",
 	},
-	Dynamic: {
-		name: "动态",
-		url: "/dynamic/",
-		icon: "material-symbols:forum-rounded",
-		pageKey: "dynamic",
-	},
 	Gallery: {
 		name: "相册",
 		url: "/gallery/",

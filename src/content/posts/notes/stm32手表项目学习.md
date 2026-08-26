@@ -5,7 +5,7 @@ tags:
 category: 追踪
 title: STM32手表项目学习
 published: 2026-08-18
-updated: 2026-08-25
+updated: 2026-08-26
 pinned: false
 author: 惜夕暮
 timeline: true
@@ -19,3 +19,5 @@ description: BV1CoGuzEEeN
 8-23 [[滑动菜单]]
 
 8-25 [[秒表]] [[手电筒]] 
+
+8-26 [[MPU6050姿态解算]] [[水平仪]]

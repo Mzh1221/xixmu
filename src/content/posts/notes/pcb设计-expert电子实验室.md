@@ -5,7 +5,7 @@ tags:
 category: 追踪
 title: PCB设计-Expert电子实验室学习时间线
 published: 2026-08-03
-updated: 2026-08-28
+updated: 2026-08-29
 pinned: false
 author: 惜夕暮
 timeline: true
@@ -29,3 +29,5 @@ description: BV1At421h7Ui
 8-17 [[17-51单片机核心板元件选型]] [[18-51 核心板电源&最小系统原理图设计]]
 
 8-28 [[19-51核心板外围功能电路原理图设计]]
+
+8-29 [[20-51单片机核心板PCB布局]] [[21-PCB板布线原则]] [[22-51单片机核心板PCB布线]]

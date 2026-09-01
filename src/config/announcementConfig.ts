@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "",
 
 	// 公告内容
-	content: "欢迎来到我的博客，动态更新频繁哦！",
+	content: "本博客坚持手搓，最近看到别人回复AI文就想吐。",
 
 	// 是否允许用户关闭公告
 	closable: false,

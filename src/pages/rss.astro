@@ -54,6 +54,35 @@ const recentPosts = posts.slice(0, 6);
             </div>
         </div>
 
+        <!-- 动态 RSS 链接复制区域 -->
+        <div class="card-base rounded-(--radius-large) p-6 mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-(--primary) rounded-xl flex items-center justify-center mr-4">
+                        <Icon name="material-symbols:dynamic-feed-rounded" class="text-white text-xl" />
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-90 mb-1">动态 RSS</h3>
+                        <p class="text-sm text-75">订阅我的日常动态记录</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <code class="bg-(--card-bg) px-3 py-2 rounded-lg text-sm font-mono text-75 border border-(--line-divider) break-all">
+                        {Astro.site}dynamic.xml
+                    </code>
+                    <button 
+                        id="copy-dynamic-rss-btn"
+                        class="px-4 py-2 bg-(--primary) text-white rounded-lg hover:opacity-80 transition-all duration-200 font-medium text-sm whitespace-nowrap"
+                        data-url={`${Astro.site}dynamic.xml`}
+                        data-copied-text={i18n(I18nKey.rssCopied)}
+                        data-failed-text={i18n(I18nKey.rssCopyFailed)}
+                    >
+                        {i18n(I18nKey.rssCopyLink)}
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- 最新文章预览 -->
         <div class="card-base rounded-(--radius-large) p-6 mb-6">
             <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
@@ -107,6 +136,32 @@ const recentPosts = posts.slice(0, 6);
     </div>
 
     <script>
+        function initDynamicRssCopy() {
+            const copyBtn = document.getElementById('copy-dynamic-rss-btn');
+            if (!copyBtn) return;
+            const newBtn = copyBtn.cloneNode(true);
+            copyBtn.parentNode?.replaceChild(newBtn, copyBtn);
+            newBtn.addEventListener('click', async function (event) {
+                const btn = event.currentTarget as HTMLElement;
+                const url = btn.getAttribute('data-url');
+                if (!url) return;
+                try {
+                    await navigator.clipboard.writeText(url);
+                    const originalText = btn.textContent;
+                    btn.textContent = btn.getAttribute('data-copied-text') || '';
+                    btn.style.backgroundColor = 'var(--success-color, #10b981)';
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.backgroundColor = '';
+                    }, 2000);
+                } catch (err) {
+                    console.error("Copy failed:", err);
+                    const originalText = btn.textContent;
+                    btn.textContent = btn.getAttribute('data-failed-text') || '';
+                    setTimeout(() => { btn.textContent = originalText; }, 2000);
+                }
+            });
+        }
         function initRssCopy() {
             const copyBtn = document.getElementById('copy-rss-btn');
             if (!copyBtn) return;
@@ -143,10 +198,9 @@ const recentPosts = posts.slice(0, 6);
         
         // 立即初始化（支持直接访问页面和刷新）
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initRssCopy);
+            document.addEventListener('DOMContentLoaded', () => { initRssCopy(); initDynamicRssCopy(); });
         } else {
-            // DOM 已加载，直接初始化
-            setTimeout(initRssCopy, 0);
+            setTimeout(() => { initRssCopy(); initDynamicRssCopy(); }, 0);
         }
         
         // 支持 Swup 客户端路由（如果存在）

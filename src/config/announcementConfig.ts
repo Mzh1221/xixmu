@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "",
 
 	// 公告内容
-	content: "本博客生活内容坚持手搓。",
+	content: "本博客生活向内容坚持手搓。",
 
 	// 是否允许用户关闭公告
 	closable: false,

@@ -1,0 +1,12 @@
+$ astro dev "--port" "4321"
+[2m15:23:15[22m [34m[vite][39m connected.
+[2m15:23:17[22m [34m[types][39m Generated [2m3ms[22m
+[2m15:23:17[22m [34m[vite][39m connected.
+[2m15:23:17[22m [34m[content][39m Syncing content
+[2m15:23:18[22m [34m[content][39m Synced content
+[42m[1m astro [22m[49m [32mv7.2.3[39m [2mready in[22m 7374 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [2muse --host to expose[22m
+[2m15:23:18[22m [32mwatching for file changes...[39m
+[2m15:23:38[22m [34m[astro-icon][39m Loaded icons from src/icons, fa7-brands, fa7-regular, fa7-solid, material-symbols, mingcute, simple-icons, mdi, svg-spinners
+[2m15:23:46[22m [34m[200][39m / [2m165ms[22m

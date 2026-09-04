@@ -33,7 +33,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
 		siteurl: "https://blog.cuteleaf.cn",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -43,7 +43,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "人心中的成见是一座大山",
 		siteurl: "https://seasir.top",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -62,7 +62,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "分享生活和技术。",
 		siteurl: "https://blog.amamo.top",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -72,7 +72,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "分享、实践、学习",
 		siteurl: "https://blog.olinl.com",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -82,7 +82,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "一个爱写文的菜鸡。",
 		siteurl: "https://blog.lxlovo.top",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -92,7 +92,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "huh！",
 		siteurl: "https://blog.qtfyu.top",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -102,7 +102,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "共同见证奇迹诞生！",
 		siteurl: "https://reknal.com",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -112,7 +112,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "人生是层层堆叠的经历，而内心永远保有一只自在小猫。",
 		siteurl: "https://www.stackmeow.tech",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -122,7 +122,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "Per Aspera Ad Astra",
 		siteurl: "https://silvaire.top/",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -132,7 +132,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "久有羡鱼意，不甘空望川. 躬身耕岁月，步步赴清澜",
 		siteurl: "https://x1anyu.cn",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -142,7 +142,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "如果你喜欢那么欢迎来到我的世界！",
 		siteurl: "https://blog.tsh520.cn",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 5, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -151,7 +151,16 @@ export const friendsConfig: FriendLink[] = [
 		desc: "躬身入局，心为主理，行有尺度，自持本心.",
 		siteurl: "https://blog.fqzlr.top/",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 5,
+		enabled: true,
+	},
+	{
+		title: "Lin Blog",
+		imgurl: "https://linlog.top/api/uploads/2026/09/1788411216332767920-dca59196a965c5e8.jpg",
+		desc: "记录技术、互联网与日常观察",
+		siteurl: "https://linlog.top",
+		tags: ["Blog"],
+		weight: 6,
 		enabled: true,
 	},
 ];

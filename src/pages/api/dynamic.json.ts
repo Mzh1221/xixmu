@@ -28,7 +28,7 @@ export async function GET(): Promise<Response> {
 
 			return {
 				id: dynamicSlug(entry.id),
-				published: entry.data.published.getTime() + 8 * 60 * 60 * 1000,
+				published: entry.data.published.getTime() - 8 * 60 * 60 * 1000,
 				html: rendered.code,
 				images,
 				searchText: dynamicSearchText(entry),

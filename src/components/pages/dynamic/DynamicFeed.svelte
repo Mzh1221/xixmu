@@ -98,7 +98,7 @@ function applyFilters(resetPage = true) {
 	filtered = entries.filter(
 		(entry) =>
 			(year === "all" ||
-				String(new Date(entry.published).getUTCFullYear()) === year) &&
+				String(new Date(entry.published - 8 * 60 * 60 * 1000).getUTCFullYear()) === year) &&
 			(!query || entry.searchText.includes(query)),
 	);
 	if (resetPage) currentPage = 1;
@@ -116,7 +116,7 @@ function populateYears() {
 	yearSelect.append(all);
 	const years = [
 		...new Set(
-			entries.map((entry) => new Date(entry.published).getUTCFullYear()),
+			entries.map((entry) => new Date(entry.published - 8 * 60 * 60 * 1000).getUTCFullYear()),
 		),
 	];
 	for (const year of years) {
@@ -137,7 +137,7 @@ function createItem(entry: DynamicData) {
 	permalinkUrl.hash = anchorId;
 	const permalink = `${permalinkUrl.pathname}${permalinkUrl.search}${permalinkUrl.hash}`;
 	root.id = anchorId;
-	root.dataset.year = String(new Date(entry.published).getUTCFullYear());
+	root.dataset.year = String(new Date(entry.published - 8 * 60 * 60 * 1000).getUTCFullYear());
 
 	const author = root.querySelector<HTMLElement>("[data-dynamic-author]");
 	if (author) {
@@ -165,7 +165,7 @@ function createItem(entry: DynamicData) {
 		});
 	const time = root.querySelector<HTMLTimeElement>("[data-dynamic-time]");
 	if (time) {
-		const date = new Date(entry.published + 8 * 60 * 60 * 1000);
+		const date = new Date(entry.published - 8 * 60 * 60 * 1000);
 		time.dateTime = date.toISOString();
 		const rel = formatRelative(date);
 		const full = new Intl.DateTimeFormat(

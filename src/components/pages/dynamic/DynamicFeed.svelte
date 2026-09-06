@@ -3,14 +3,6 @@ import { onMount, tick } from "svelte";
 import ClientPagination from "@/components/common/ClientPagination.svelte";
 import { formatTimezoneOffset } from "@/utils/date-utils";
 
-function formatRelative(date: Date): string {
-	const diff = (Date.now() - date.getTime()) / 1000;
-	if (diff < 60) return "刚刚";
-	if (diff < 3600) return Math.floor(diff / 60) + " 分钟前";
-	if (diff < 86400) return Math.floor(diff / 3600) + " 小时前";
-	return Math.floor(diff / 86400) + " 天前";
-}
-
 import { fetchMemos } from "@/utils/memos-adapter";
 import { registerDynamicGallery } from "./dynamic-gallery";
 import { registerDynamicInlineComments } from "./dynamic-inline-comments";
@@ -167,20 +159,30 @@ function createItem(entry: DynamicData) {
 	if (time) {
 		const date = new Date(entry.published);
 		time.dateTime = date.toISOString();
-		const rel = formatRelative(date);
-		const full = new Intl.DateTimeFormat(
-			document.documentElement.lang || undefined,
-			{
-				timeZone: "UTC",
+		// 第三方 API 和 Memos 使用浏览器本地时区，不做额外时区转换
+		if (source.startsWith("http") || memos?.enable) {
+			time.textContent = date.toLocaleDateString("zh-CN", {
 				year: "numeric",
 				month: "2-digit",
 				day: "2-digit",
 				hour: "2-digit",
 				minute: "2-digit",
-				second: "2-digit",
-			},
-		).format(date);
-		time.textContent = rel + " " + full + " " + formatTimezoneOffset(timezone, date);
+			});
+		} else {
+			time.textContent = new Intl.DateTimeFormat(
+				document.documentElement.lang || undefined,
+				{
+					timeZone: "UTC",
+					year: "numeric",
+					month: "2-digit",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				},
+			).format(date);
+			time.textContent += ` ${formatTimezoneOffset(timezone, date)}`;
+		}
 	}
 	const location = root.querySelector<HTMLElement>("[data-dynamic-location]");
 	if (location) {

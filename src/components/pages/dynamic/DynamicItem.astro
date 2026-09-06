@@ -6,7 +6,7 @@ import DynamicInlineComments from "@/components/pages/dynamic/DynamicInlineComme
 import { dynamicConfig, siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
-import { formatDynamicDate, formatTimezoneOffset } from "@/utils/date-utils";
+import { formatDynamicDate, formatRelativeTime, formatTimezoneOffset } from "@/utils/date-utils";
 import { dynamicAnchor } from "@/utils/dynamic-utils";
 
 interface Props {
@@ -25,7 +25,7 @@ const {
 const { Content } = await render(entry);
 const anchorId = dynamicAnchor(entry.id);
 const published = formatDynamicDate(entry.data.published);
-
+const relativeTime = formatRelativeTime(entry.data.published);
 const timezone = formatTimezoneOffset(
 	siteConfig.timezone || "UTC",
 	entry.data.published,
@@ -47,7 +47,7 @@ const location = entry.data.location.trim();
 				<div class="dynamic-meta">
 					<a class="dynamic-time" href={permalink}>
 						<time datetime={entry.data.published.toISOString()}>
-							{published}
+							{relativeTime}
 						</time>
 					</a>
 					{location && (

@@ -6,6 +6,7 @@ import { formatTimezoneOffset } from "@/utils/date-utils";
 function formatRelativeTime(dateInput: Date | string): string {
 	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
 	const now = new Date();
+
 	const diffMs = now.getTime() - date.getTime();
 	const diffSec = Math.floor(diffMs / 1000);
 	const diffMin = Math.floor(diffSec / 60);
@@ -176,30 +177,19 @@ function createItem(entry: DynamicData) {
 	if (time) {
 		const date = new Date(entry.published);
 		time.dateTime = date.toISOString();
-		if (source.startsWith("http") || memos?.enable) {
-			const full = date.toLocaleDateString("zh-CN", {
+		const full = new Intl.DateTimeFormat(
+			document.documentElement.lang || undefined,
+			{
+				timeZone: "UTC",
 				year: "numeric",
 				month: "2-digit",
 				day: "2-digit",
 				hour: "2-digit",
 				minute: "2-digit",
-			});
-			time.textContent = `${formatRelativeTime(date)} ${full}`;
-		} else {
-			const full = new Intl.DateTimeFormat(
-				document.documentElement.lang || undefined,
-				{
-					timeZone: "UTC",
-					year: "numeric",
-					month: "2-digit",
-					day: "2-digit",
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				},
-			).format(date);
-			time.textContent = `${formatRelativeTime(date)} ${full} ${formatTimezoneOffset(timezone, date)}`;
-		}
+				second: "2-digit",
+			},
+		).format(date);
+		time.textContent = full + " " + formatTimezoneOffset(timezone, date);
 	}
 	const location = root.querySelector<HTMLElement>("[data-dynamic-location]");
 	if (location) {

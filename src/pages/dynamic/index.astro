@@ -84,18 +84,30 @@ const memos = dynamicConfig.memos;
 			<DynamicItemTemplate />
 		</div>
 	</section>
+
 <script is:inline>
-function fixTimes() {
-	document.querySelectorAll("time[datetime]").forEach(function(t) {
-		var d = new Date(t.getAttribute("datetime"));
-		if (isNaN(d.getTime())) return;
+(function() {
+	function rel(dt) {
+		var d = new Date(dt);
 		var diff = (Date.now() - d.getTime()) / 1000;
-		var r = diff < 60 ? "刚刚" : diff < 3600 ? Math.floor(diff/60) + " 分钟前" : diff < 86400 ? Math.floor(diff/3600) + " 小时前" : Math.floor(diff/86400) + " 天前";
-		t.textContent = t.textContent.replace(/^[^\d]*/, r + " ");
-	});
-}
-document.addEventListener("DOMContentLoaded", fixTimes);
-document.addEventListener("astro:page-load", fixTimes);
-setTimeout(fixTimes, 2000);
+		if (diff < 60) return "刚刚";
+		if (diff < 3600) return Math.floor(diff / 60) + " 分钟前";
+		if (diff < 86400) return Math.floor(diff / 3600) + " 小时前";
+		return Math.floor(diff / 86400) + " 天前";
+	}
+	function update() {
+		document.querySelectorAll("time[datetime]").forEach(function(t) {
+			var r = rel(t.getAttribute("datetime"));
+			var text = t.textContent.trim();
+			if (text.indexOf(r) === 0) return;
+			t.textContent = r + " " + text;
+		});
+	}
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", update);
+	} else {
+		update();
+	}
+})();
 </script>
 </MainGridLayout>

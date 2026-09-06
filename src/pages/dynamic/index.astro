@@ -85,37 +85,4 @@ const memos = dynamicConfig.memos;
 		</div>
 	</section>
 
-<script is:inline>
-(function() {
-	function rel(dt) {
-		var d = new Date(dt);
-		var diff = (Date.now() - d.getTime()) / 1000;
-		if (diff < 60) return "刚刚";
-		if (diff < 3600) return Math.floor(diff / 60) + " 分钟前";
-		if (diff < 86400) return Math.floor(diff / 3600) + " 小时前";
-		return Math.floor(diff / 86400) + " 天前";
-	}
-	function update() {
-		document.querySelectorAll("time[datetime]").forEach(function(t) {
-			var r = rel(t.getAttribute("datetime"));
-			var text = t.textContent.trim();
-			if (text.indexOf(r) !== 0) t.textContent = r + " " + text;
-		});
-	}
-	// MutationObserver 监听 Svelte 异步渲染的 time 元素
-	var obs = new MutationObserver(function(mutations) {
-		for (var i = 0; i < mutations.length; i++) {
-			if (mutations[i].type === "attributes" && mutations[i].attributeName === "datetime") {
-				update();
-				return;
-			}
-		}
-	});
-	obs.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["datetime"] });
-	// 首屏立即 + 延迟兜底
-	update();
-	setTimeout(update, 500);
-	setTimeout(update, 2000);
-})();
-</script>
 </MainGridLayout>

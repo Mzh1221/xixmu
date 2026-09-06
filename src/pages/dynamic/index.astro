@@ -84,4 +84,18 @@ const memos = dynamicConfig.memos;
 			<DynamicItemTemplate />
 		</div>
 	</section>
+<script is:inline>
+function fixTimes() {
+	document.querySelectorAll("time[datetime]").forEach(function(t) {
+		var d = new Date(t.getAttribute("datetime"));
+		if (isNaN(d.getTime())) return;
+		var diff = (Date.now() - d.getTime()) / 1000;
+		var r = diff < 60 ? "刚刚" : diff < 3600 ? Math.floor(diff/60) + " 分钟前" : diff < 86400 ? Math.floor(diff/3600) + " 小时前" : Math.floor(diff/86400) + " 天前";
+		t.textContent = t.textContent.replace(/^[^\d]*/, r + " ");
+	});
+}
+document.addEventListener("DOMContentLoaded", fixTimes);
+document.addEventListener("astro:page-load", fixTimes);
+setTimeout(fixTimes, 2000);
+</script>
 </MainGridLayout>

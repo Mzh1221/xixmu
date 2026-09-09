@@ -1,0 +1,25 @@
+{
+  "session": {
+    "schemaVersion": 2,
+    "id": "session-019f51cc-a69b-7252-8a98-eb2f2fb28792",
+    "createdAt": 1783783794330,
+    "updatedAt": 1783783794330,
+    "model": {
+      "providerId": "mimo",
+      "modelId": "mimo-2.5"
+    },
+    "subagents": {
+      "master": {
+        "id": "master",
+        "type": "master",
+        "status": "idle",
+        "createdAt": 1783783794330,
+        "timeline": [],
+        "pendingInputs": [],
+        "operations": {},
+        "toolTimings": {},
+        "subagents": {}
+      }
+    }
+  }
+}

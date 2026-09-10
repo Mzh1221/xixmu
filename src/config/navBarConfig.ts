@@ -77,7 +77,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	links.push(LinkPresets.LearningTimeline);
+
 
 	// 关于及其子菜单
 	links.push({
@@ -94,6 +94,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 时间线
 			LinkPresets.Timeline,
 
+			// 学习时间线
+			LinkPresets.LearningTimeline,
+			
 			// 关于页面
 			LinkPresets.About,
 		],

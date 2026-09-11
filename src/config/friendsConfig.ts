@@ -160,7 +160,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "记录技术、互联网与日常观察",
 		siteurl: "https://linlog.top",
 		tags: ["Blog"],
-		weight: 6,
+		weight: 5,
 		enabled: true,
 	},
 	{
@@ -169,7 +169,16 @@ export const friendsConfig: FriendLink[] = [
 		desc: "星宇安全实验室，专注网络安全技术分享，记录团队实战经历、安全研究与编程成长笔记，致力于分享网安学习干货。",
 		siteurl: "https://bk.zhaozhiqiang.pw",
 		tags: ["Blog"],
-		weight: 6,
+		weight: 5,
+		enabled: true,
+	},
+	{
+		title: "SilverCode_Nexus",
+		imgurl: "https://cdn.replow.org/replow-org/images/tx.ico",
+		desc: "Replow的小站",
+		siteurl: "https://www.replow.org",
+		tags: ["Blog"],
+		weight: 5,
 		enabled: true,
 	},
 ];

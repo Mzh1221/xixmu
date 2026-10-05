@@ -119,10 +119,22 @@ export const booknavConfig: BooknavGroup[] = [
 		weight: 80,
 		items: [
 			{
+				title: "中国铁路地图",
+				url: "http://cnrail.geogv.org/zhcn/",
+				desc: "看起来非常清晰、舒服的铁路地图",
+				weight: 6,
+			},
+			{
+				title: "CHINAEMU",
+				url: "https://www.china-emu.cn/",
+				desc: "对铁路的全面记录",
+				weight: 6,
+			},
+			{
 				title: "Cent",
 				url: "https://cent.linkai.work/",
 				desc: "方便易用、无需部署的记账web应用",
-				weight: 6,
+				weight: 5,
 			},
 			{
 				title: "Smart Calculators",

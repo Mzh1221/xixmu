@@ -119,6 +119,12 @@ export const booknavConfig: BooknavGroup[] = [
 		weight: 80,
 		items: [
 			{
+				title: "嘉立创EDA教育与开源文档中心",
+				url: "https://wiki.lceda.cn/zh-hans/",
+				desc: "立创文档中心",
+				weight: 6,
+			},
+			{
 				title: "中国铁路地图",
 				url: "http://cnrail.geogv.org/zhcn/",
 				desc: "看起来非常清晰、舒服的铁路地图",
@@ -127,7 +133,7 @@ export const booknavConfig: BooknavGroup[] = [
 			{
 				title: "CHINAEMU",
 				url: "https://www.china-emu.cn/",
-				desc: "对铁路的全面记录",
+				desc: "中国动车组，对铁路的全面记录",
 				weight: 6,
 			},
 			{
